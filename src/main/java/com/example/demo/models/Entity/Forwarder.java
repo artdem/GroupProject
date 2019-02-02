@@ -1,37 +1,39 @@
-package com.example.demo.models;
+package com.example.demo.models.Entity;
 
+import com.example.demo.models.Role;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class PurchaserDTO {
+@Entity
+public class Forwarder {
 
-    @NotBlank(message = "Purchaser name must not be null and can't consist of only white characters")
-    private String purchaserName;
-    private long purchaserID;
-    @Email(message = "Enter valid email")
+    private String forwarderName;
+    @Id
+    private long forwarderID;
     private String login;
-    @NotBlank(message = "Password must not be null and can't consist of only white characters")
-    @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
     private Role role;
     private int SkypeID;
     private boolean logINstatus;
 
-    public String getPurchaserName() {
-        return purchaserName;
+    public String getForwarderName() {
+        return forwarderName;
     }
 
-    public void setPurchaserName(String purchaserName) {
-        this.purchaserName = purchaserName;
+    public void setForwarderName(String forwarderName) {
+        this.forwarderName = forwarderName;
     }
 
-    public long getPurchaserID() {
-        return purchaserID;
+    public long getForwarderID() {
+        return forwarderID;
     }
 
-    public void setPurchaserID(long purchaserID) {
-        this.purchaserID = purchaserID;
+    public void setForwarderID(long forwarderID) {
+        this.forwarderID = forwarderID;
     }
 
     public String getLogin() {

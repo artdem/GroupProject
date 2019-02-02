@@ -6,9 +6,9 @@ import javax.validation.constraints.Size;
 
 public class ForwarderDTO {
 
-    @NotBlank(message = "Employee name must not be null and can't consist of only white characters")
-    private String employeeName;
-    private long employeeID;
+    @NotBlank(message = "Forwarder name must not be null and can't consist of only white characters")
+    private String forwarderName;
+    private long forwarderID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
@@ -17,4 +17,60 @@ public class ForwarderDTO {
     private Role role;
     private int SkypeID;
     private boolean logINstatus;
+
+    public String getForwarderName() {
+        return forwarderName;
+    }
+
+    public void setForwarderName(String forwarderName) {
+        this.forwarderName = forwarderName;
+    }
+
+    public long getForwarderID() {
+        return forwarderID;
+    }
+
+    public void setForwarderID(long forwarderID) {
+        this.forwarderID = forwarderID;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public int getSkypeID() {
+        return SkypeID;
+    }
+
+    public void setSkypeID(int skypeID) {
+        SkypeID = skypeID;
+    }
+
+    public boolean isLogINstatus() {
+        return logINstatus;
+    }
+
+    public void setLogINstatus(boolean logINstatus) {
+        this.logINstatus = logINstatus;
+    }
 }

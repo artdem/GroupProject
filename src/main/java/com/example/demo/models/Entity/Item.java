@@ -1,12 +1,13 @@
-package com.example.demo.models;
+package com.example.demo.models.Entity;
 
-import javax.validation.constraints.NotBlank;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class ItemDTO {
+@Entity
+public class Item {
 
-    @NotBlank(message = "Item ID must not be null and can't consist of only white characters")
+    @Id
     private String itemID;
-    @NotBlank(message = "Item name must not be null and can't consist of only white characters")
     private String itemName;
 
     public String getItemID() {
