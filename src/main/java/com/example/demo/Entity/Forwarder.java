@@ -1,39 +1,36 @@
-package com.example.demo.models.Entity;
+package com.example.demo.Entity;
 
 import com.example.demo.models.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-public class Admin {
+public class Forwarder {
 
-    private String adminName;
+    private String forwarderName;
     @Id
-    private long adminID;
+    private long forwarderID;
     private String login;
     private String password;
     private Role role;
     private int SkypeID;
     private boolean logINstatus;
 
-    public String getAdminName() {
-        return adminName;
+    public String getForwarderName() {
+        return forwarderName;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
+    public void setForwarderName(String forwarderName) {
+        this.forwarderName = forwarderName;
     }
 
-    public long getAdminID() {
-        return adminID;
+    public long getForwarderID() {
+        return forwarderID;
     }
 
-    public void setAdminID(long adminID) {
-        this.adminID = adminID;
+    public void setForwarderID(long forwarderID) {
+        this.forwarderID = forwarderID;
     }
 
     public String getLogin() {

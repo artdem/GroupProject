@@ -1,39 +1,36 @@
-package com.example.demo.models.Entity;
+package com.example.demo.Entity;
 
 import com.example.demo.models.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-public class Purchaser {
+public class Admin {
 
-    private String purchaserName;
+    private String adminName;
     @Id
-    private long purchaserID;
+    private long adminID;
     private String login;
     private String password;
     private Role role;
     private int SkypeID;
     private boolean logINstatus;
 
-    public String getPurchaserName() {
-        return purchaserName;
+    public String getAdminName() {
+        return adminName;
     }
 
-    public void setPurchaserName(String purchaserName) {
-        this.purchaserName = purchaserName;
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
-    public long getPurchaserID() {
-        return purchaserID;
+    public long getAdminID() {
+        return adminID;
     }
 
-    public void setPurchaserID(long purchaserID) {
-        this.purchaserID = purchaserID;
+    public void setAdminID(long adminID) {
+        this.adminID = adminID;
     }
 
     public String getLogin() {

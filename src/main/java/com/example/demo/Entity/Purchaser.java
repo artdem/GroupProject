@@ -1,39 +1,36 @@
-package com.example.demo.models.Entity;
+package com.example.demo.Entity;
 
 import com.example.demo.models.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-public class Forwarder {
+public class Purchaser {
 
-    private String forwarderName;
+    private String purchaserName;
     @Id
-    private long forwarderID;
+    private long purchaserID;
     private String login;
     private String password;
     private Role role;
     private int SkypeID;
     private boolean logINstatus;
 
-    public String getForwarderName() {
-        return forwarderName;
+    public String getPurchaserName() {
+        return purchaserName;
     }
 
-    public void setForwarderName(String forwarderName) {
-        this.forwarderName = forwarderName;
+    public void setPurchaserName(String purchaserName) {
+        this.purchaserName = purchaserName;
     }
 
-    public long getForwarderID() {
-        return forwarderID;
+    public long getPurchaserID() {
+        return purchaserID;
     }
 
-    public void setForwarderID(long forwarderID) {
-        this.forwarderID = forwarderID;
+    public void setPurchaserID(long purchaserID) {
+        this.purchaserID = purchaserID;
     }
 
     public String getLogin() {
