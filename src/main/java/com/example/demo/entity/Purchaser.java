@@ -3,6 +3,8 @@ package com.example.demo.entity;
 import com.example.demo.models.Role;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -10,7 +12,7 @@ public class Purchaser {
 
     private String purchaserName;
     @Id
-    private long purchaserID;
+    private String purchaserID;
     private String login;
     private String password;
     private Role role;
@@ -25,11 +27,11 @@ public class Purchaser {
         this.purchaserName = purchaserName;
     }
 
-    public long getPurchaserID() {
+    public String getPurchaserID() {
         return purchaserID;
     }
 
-    public void setPurchaserID(long purchaserID) {
+    public void setPurchaserID(String purchaserID) {
         this.purchaserID = purchaserID;
     }
 

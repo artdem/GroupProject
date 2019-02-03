@@ -1,8 +1,8 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -20,7 +20,8 @@ public class Lack {
     private LocalDate LacksSetDateAndTime;
     private Boolean status;
     @Id
-    private int lackID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String lackID;
     private int orderedAmount;
     private LocalDate expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
@@ -97,11 +98,11 @@ public class Lack {
         this.status = status;
     }
 
-    public int getLackID() {
+    public String getLackID() {
         return lackID;
     }
 
-    public void setLackID(int lackID) {
+    public void setLackID(String lackID) {
         this.lackID = lackID;
     }
 

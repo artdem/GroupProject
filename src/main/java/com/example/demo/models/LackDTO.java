@@ -13,7 +13,7 @@ public class LackDTO {
     private SupplierDTO Supplier;
     private LocalDate LacksSetDateAndTime;
     private Boolean status;
-    private int lackID;
+    private String lackID;
     private int orderedAmount;
     private LocalDate expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
@@ -90,11 +90,11 @@ public class LackDTO {
         this.status = status;
     }
 
-    public int getLackID() {
+    public String getLackID() {
         return lackID;
     }
 
-    public void setLackID(int lackID) {
+    public void setLackID(String lackID) {
         this.lackID = lackID;
     }
 

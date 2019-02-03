@@ -6,11 +6,10 @@ import javax.persistence.Id;
 @Entity
 public class Supplier {
 
-    private String supplierName;
+    String supplierName;
     @Id
     private String supplierID;
     private String purchaserName;
-    private int purchaserID;
     private int purchaserSkypeID;
 
     public String getSupplierName() {
@@ -35,14 +34,6 @@ public class Supplier {
 
     public void setPurchaserName(String purchaserName) {
         this.purchaserName = purchaserName;
-    }
-
-    public int getPurchaserID() {
-        return purchaserID;
-    }
-
-    public void setPurchaserID(int purchaserID) {
-        this.purchaserID = purchaserID;
     }
 
     public int getPurchaserSkypeID() {

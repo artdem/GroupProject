@@ -8,7 +8,8 @@ public class PurchaserDTO {
 
     @NotBlank(message = "Purchaser name must not be null and can't consist of only white characters")
     private String purchaserName;
-    private long purchaserID;
+    @NotBlank(message = "Purchaser ID must not be null and can't consist of only white characters")
+    private String purchaserID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
@@ -26,11 +27,11 @@ public class PurchaserDTO {
         this.purchaserName = purchaserName;
     }
 
-    public long getPurchaserID() {
+    public String getPurchaserID() {
         return purchaserID;
     }
 
-    public void setPurchaserID(long purchaserID) {
+    public void setPurchaserID(String purchaserID) {
         this.purchaserID = purchaserID;
     }
 
