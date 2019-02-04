@@ -1,16 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Suppliers list</title>
+    <title>Suppliers</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
 </head>
 <body>
-<table style="border:1px solid black">
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/">Home</a></li>
+            <li><a href="http://localhost:8080/suppliers">Suppliers list</a></li>
+            <li><a href="http://localhost:8080/suppliers/add">Add supplier</a></li>
+            <li><a href="#">link 3</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="description">
+
+<table>
     <tr>
-        <td>Supplier Name</td>
-        <td>Supplier ID</td>
-        <td>Purchaser Name</td>
-        <td>Purchaser Skype ID</td>
+        <td><h3>Supplier Name</h3></td>
+        <td><h3>Supplier ID</h3></td>
+        <td><h3>Purchaser Name</h3></td>
+        <td><h3>Purchaser Skype ID</h3></td>
     </tr>
     <tr th:each="supplier : *{suppliers}">
         <td th:text="${supplier.supplierName}"></td>
@@ -19,6 +36,10 @@
         <td th:text="${supplier.purchaserSkypeID}"></td>
     </tr>
 </table>
-
+</section>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
 </body>
 </html>
