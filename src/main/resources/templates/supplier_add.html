@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="#" th:action="@{/suppliers/add}" th:object="${supplier}" method="post">
+    <table border="1">
+        <tr>
+            <td>Supplier Name</td>
+            <td><input type="text" th:field="*{supplierName}" /></td>
+            <td th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Supplier ID</td>
+            <td><input type="text" th:field="*{supplierID}" /></td>
+        </tr>
+        <tr>
+            <td>Purchaser Name</td>
+            <!--<td><input type="text" th:field="*{purchaserName}" /></td>&ndash;&gt;-->
+            <td><select th:field="*{purchaserName}">
+                <option th:each="purchaser : ${purchasers}"
+                        th:value="${purchaser.purchaserName}"
+                        th:text="${purchaser.purchaserName}">
+                </option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Purchaser Skype ID</td>
+            <td><input type="text" th:field="*{purchaserSkypeID}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

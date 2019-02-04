@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Suppliers list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table style="border:1px solid black">
+    <tr>
+        <td>Supplier Name</td>
+        <td>Supplier ID</td>
+        <td>Purchaser Name</td>
+        <td>Purchaser Skype ID</td>
+    </tr>
+    <tr th:each="supplier : *{suppliers}">
+        <td th:text="${supplier.supplierName}"></td>
+        <td th:text="${supplier.supplierID}"></td>
+        <td th:text="${supplier.purchaserName}"></td>
+        <td th:text="${supplier.purchaserSkypeID}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
