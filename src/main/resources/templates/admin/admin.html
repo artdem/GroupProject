@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+
+
+</head>
+<body class="background-white">
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080">Home</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders">Forwarders</a></li>
+            <li><a href="http://localhost:8080/admin/purchasers">Purchasers</a></li>
+            <li><a href="http://localhost:8080/admin/lacks">Lacks</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="description">
+        <div>
+            <h3>ADMIN PANEL</h3>
+            <p class="paragraph">Wybierz z górnego menu</p>
+            <div class="underline"></div>
+        </div>
+    </section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

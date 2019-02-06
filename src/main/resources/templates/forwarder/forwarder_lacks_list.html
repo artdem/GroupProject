@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Forwarder add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080">Home</a></li>
+            <li><a href="http://localhost:8080/forwarder/lacks">Lacks list</a></li>
+            <li><a href="http://localhost:8080/forwarder/lacks/add">Add lack</a></li>
+            <li><a href="http://localhost:8080/forwarder/lacks/delete">Delete lack</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="description">
+    <table>
+        <tr>
+            <td>Lack ID</td>
+            <td>Item</td>
+            <td>Item required amount</td>
+            <td>Forwarder ID</td>
+            <td>Purchaser ID</td>
+            <td>Supplier ID</td>
+            <td>Entry date</td>
+            <td>Lack status</td>
+            <td>Item ordered amount</td>
+            <td>Expected delivery date</td>
+        </tr>
+        <tr th:each="lack : *{lacks}">
+            <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+            <td th:text="${lack.lackID}"></td>
+            <td th:text="${lack.item}"></td>
+            <td th:text="${lack.requiredAmount}"></td>
+            <td th:text="${lack.forwarderID}"></td>
+            <td th:text="${lack.purchaserID}"></td>
+            <td th:text="${lack.supplierID}"></td>
+            <td th:text="${lack.lacksSetDateAndTime}"></td>
+            <td th:text="${lack.status}"></td>
+            <td th:text="${lack.orderedAmount}"></td>
+            <td th:text="${lack.expectedDeliveryDateAndTime}"></td>
+        </tr>
+    </table>
+</section>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

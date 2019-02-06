@@ -10,7 +10,7 @@ public class Forwarder {
 
     private String forwarderName;
     @Id
-    private long forwarderID;
+    private String forwarderID;
     private String login;
     private String password;
     private Role role;
@@ -25,11 +25,11 @@ public class Forwarder {
         this.forwarderName = forwarderName;
     }
 
-    public long getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(long forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 

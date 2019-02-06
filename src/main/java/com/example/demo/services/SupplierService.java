@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SupplierService {
@@ -15,12 +16,16 @@ public class SupplierService {
         this.supplierRepository = supplierRepository;
     }
 
-    public List<Supplier> getAll(){
-        return supplierRepository.findAll();
+    public List<SupplierDTO> getAll(){
+        return supplierRepository.findAll().stream().map(this::supplierToDTO).collect(Collectors.toList());
     }
 
     public void save(SupplierDTO supplierDTO){
         supplierRepository.save(dtoToSupplier(supplierDTO));
+    }
+
+    public void delete(Supplier supplier){
+        supplierRepository.deleteById(supplier.getSupplierID());
     }
 
     Supplier dtoToSupplier(SupplierDTO supplierDTO) {
@@ -34,4 +39,6 @@ public class SupplierService {
         BeanUtils.copyProperties(supplier, supplierDTO);
         return supplierDTO;
     }
+
+
 }

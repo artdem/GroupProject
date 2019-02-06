@@ -8,7 +8,8 @@ public class ForwarderDTO {
 
     @NotBlank(message = "Forwarder name must not be null and can't consist of only white characters")
     private String forwarderName;
-    private long forwarderID;
+    @NotBlank(message = "Forwarder ID must not be null and can't consist of only white characters")
+    private String forwarderID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
@@ -26,11 +27,11 @@ public class ForwarderDTO {
         this.forwarderName = forwarderName;
     }
 
-    public long getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(long forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 

@@ -4,25 +4,24 @@ import java.time.LocalDate;
 
 public class LackDTO {
 
-    private ItemDTO item;
+    private String item;
     private int requiredAmount;
-    private String unitOfMeasure;
     private String forwarderAdditionalComment;
-    private int forwarderID;
-    private int forwarderSkypeID;
-    private SupplierDTO Supplier;
+    private String forwarderID;
+    private String purchaserID;
+    private String supplierID;
     private LocalDate LacksSetDateAndTime;
-    private Boolean status;
+    private LackStatus status;
     private String lackID;
     private int orderedAmount;
     private LocalDate expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
-    public ItemDTO getItem() {
+    public String getItem() {
         return item;
     }
 
-    public void setItem(ItemDTO item) {
+    public void setItem(String item) {
         this.item = item;
     }
 
@@ -34,14 +33,6 @@ public class LackDTO {
         this.requiredAmount = requiredAmount;
     }
 
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
-    }
-
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
-    }
-
     public String getForwarderAdditionalComment() {
         return forwarderAdditionalComment;
     }
@@ -50,28 +41,28 @@ public class LackDTO {
         this.forwarderAdditionalComment = forwarderAdditionalComment;
     }
 
-    public int getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(int forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 
-    public int getForwarderSkypeID() {
-        return forwarderSkypeID;
+    public String getPurchaserID() {
+        return purchaserID;
     }
 
-    public void setForwarderSkypeID(int forwarderSkypeID) {
-        this.forwarderSkypeID = forwarderSkypeID;
+    public void setPurchaserID(String purchaserID) {
+        this.purchaserID = purchaserID;
     }
 
-    public SupplierDTO getSupplier() {
-        return Supplier;
+    public String getSupplierID() {
+        return supplierID;
     }
 
-    public void setSupplier(SupplierDTO supplier) {
-        Supplier = supplier;
+    public void setSupplierID(String supplierID) {
+        this.supplierID = supplierID;
     }
 
     public LocalDate getLacksSetDateAndTime() {
@@ -82,11 +73,11 @@ public class LackDTO {
         LacksSetDateAndTime = lacksSetDateAndTime;
     }
 
-    public Boolean getStatus() {
+    public LackStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(LackStatus status) {
         this.status = status;
     }
 
@@ -120,5 +111,23 @@ public class LackDTO {
 
     public void setPurchaserAdditionalComment(String purchaserAdditionalComment) {
         this.purchaserAdditionalComment = purchaserAdditionalComment;
+    }
+
+    @Override
+    public String toString() {
+        return "LackDTO{" +
+                "item='" + item + '\'' +
+                ", requiredAmount=" + requiredAmount +
+                ", forwarderAdditionalComment='" + forwarderAdditionalComment + '\'' +
+                ", forwarderID='" + forwarderID + '\'' +
+                ", purchaserID='" + purchaserID + '\'' +
+                ", supplierID='" + supplierID + '\'' +
+                ", LacksSetDateAndTime=" + LacksSetDateAndTime +
+                ", status=" + status +
+                ", lackID='" + lackID + '\'' +
+                ", orderedAmount=" + orderedAmount +
+                ", expectedDeliveryDateAndTime=" + expectedDeliveryDateAndTime +
+                ", purchaserAdditionalComment='" + purchaserAdditionalComment + '\'' +
+                '}';
     }
 }

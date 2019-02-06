@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Suppliers</title>
+    <title>Forwarder delete success</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="BRAKI APP">
     <meta name="keywords" content=”html,javascript,css”>
@@ -13,29 +13,16 @@
 <header class="background-blue">
     <nav>
         <ul>
-            <li><a href="http://localhost:8080/">Home</a></li>
-            <li><a href="http://localhost:8080/suppliers">Suppliers list</a></li>
-            <li><a href="http://localhost:8080/suppliers/add">Add supplier</a></li>
-            <li><a href="#">link 3</a></li>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders">Forwarders list</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders/add">Add forwarder</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders/delete">Delete forwarder</a></li>
         </ul>
     </nav>
 </header>
 <section id="description">
-
-<table>
-    <tr>
-        <td><h3>Supplier Name</h3></td>
-        <td><h3>Supplier ID</h3></td>
-        <td><h3>Purchaser Name</h3></td>
-        <td><h3>Purchaser Skype ID</h3></td>
-    </tr>
-    <tr th:each="supplier : *{suppliers}">
-        <td th:text="${supplier.supplierName}"></td>
-        <td th:text="${supplier.supplierID}"></td>
-        <td th:text="${supplier.purchaserName}"></td>
-        <td th:text="${supplier.purchaserSkypeID}"></td>
-    </tr>
-</table>
+    <p th:text="'Następujący kupujący został skasowany:'"/></br>
+    <p th:text="${forwarder}" />
 </section>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>

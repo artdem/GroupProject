@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lacks - Supplier choice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/lacks/forwarder">Wg.Forwardera</a></li>
+            <li><a href="http://localhost:8080/admin/lacks/purchaser">Wg.Purchasera</a></li>
+            <li><a href="http://localhost:8080/admin/lacks/supplier">Wg.Suppliera</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="description">
+
+    <form action="#" th:action="@{/admin/lacks/supplier}" th:object="${supplier}" method="post">
+        <table>
+            <tr>
+                <td>Wybierz Forwardera</td>
+                <td><select th:field="*{supplierID}">
+                    <option th:each="supplier : ${suppliers}"
+                            th:value="${supplier.supplierID}"
+                            th:text="${supplier.supplierID}">
+                    </option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Wyświetl" /></td>
+            </tr>
+        </table>
+    </form>
+</section>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

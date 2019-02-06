@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SupplierRepository extends CrudRepository<Supplier, String> {
     List<Supplier> findAll();
+
+    void deleteBySupplierName(String supplierName);
 }

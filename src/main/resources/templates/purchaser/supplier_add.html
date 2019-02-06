@@ -13,16 +13,17 @@
 <header class="background-blue">
     <nav>
         <ul>
-            <li><a href="http://localhost:8080/">Home</a></li>
-            <li><a href="http://localhost:8080/suppliers">Suppliers list</a></li>
-            <li><a href="http://localhost:8080/suppliers/add">Add supplier</a></li>
-            <li><a href="#">link 3</a></li>
+            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers">Suppliers list</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers/add">Add supplier</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers/delete">Delete supplier</a></li>
         </ul>
     </nav>
 </header>
 <section id="description">
 
-<form action="#" th:action="@{/suppliers/add}" th:object="${supplier}" method="post">
+<!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
+<form action="#" th:action="@{/purchaser/suppliers/add}" th:object="${supplier}" method="post">
     <table>
         <tr>
             <td>Supplier Name</td>
@@ -32,23 +33,21 @@
         <tr>
             <td>Supplier ID</td>
             <td><input type="text" th:field="*{supplierID}" /></td>
+            <td th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">ID Error</td>
         </tr>
         <tr>
             <td>Purchaser Name</td>
-            <!--<td><input type="text" th:field="*{purchaserName}" /></td>&ndash;&gt;-->
-            <td><select th:field="*{purchaserName}">
+            <td><select th:field="*{purchaserID}">
+                <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+                <!--/*@thymesVar id="purchasers" type="java.util.List"*/-->
                 <option th:each="purchaser : ${purchasers}"
-                        th:value="${purchaser.purchaserName}"
-                        th:text="${purchaser.purchaserName}">
+                        th:value="${purchaser.purchaserID}"
+                        th:text="${purchaser.purchaserID}">
                 </option>
             </select></td>
         </tr>
         <tr>
-            <td>Purchaser Skype ID</td>
-            <td><input type="text" th:field="*{purchaserSkypeID}" /></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="Submit" /></td>
+            <td><input type="submit" value="Zapisz" /></td>
         </tr>
     </table>
 </form>

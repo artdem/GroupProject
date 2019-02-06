@@ -14,7 +14,7 @@ table {
     border-collapse: collapse;
     table-layout: auto;
     border: 1px solid #4267b2;
-    width: 90%;
+    /*width: 90%;*/
     padding: 1em;
     margin: 1em;
     text-align: center;
@@ -32,9 +32,6 @@ th,td {
 }
 .background-blue{
     background-color: #4267b2;
-}
-.background-yellow{
-    background-color: #c7900a
 }
 nav{
     margin: 0 auto;
@@ -66,19 +63,6 @@ main{
     padding-right: 1.5rem;
     text-align: center;
 }
-.weather{
-    height: 15rem;
-    width: 30rem;
-    margin: 1rem auto;
-    padding: 1rem;
-    border: 0.5rem solid #4267b2;
-    border-radius: 2rem;
-}
-.weather-conditions{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 h1{
     font-size: 4rem;
     padding: 2rem;
@@ -89,35 +73,15 @@ h2{
 h3{
     padding-bottom: 1rem;
 }
-.profile-photo{
-    width: 25rem;
-    height: 25rem;
-    border-radius: 50%;
-    border: 0.5rem solid transparent;
-    object-fit: cover;
-    box-shadow: 0 0 0.5rem 0.5rem #4267b2;
-}
-.toggle-background{
-    display: block;
-    margin: 2rem auto;
-    padding: 1rem;
-    font-size: 2rem;
-    color: #ffffff;
-    background-color: #4267b2;
-    border: none;
-    border-radius: 1rem;
-    outline: none;
-}
 .toggle-background:focus{
     box-shadow: 0 0 0 0.2rem #BC243C;
 }
-.toggle-background:hover{
-    background: #29487d;
-    cursor: pointer;
-}
 #description > div{
     margin: 2rem;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 .underline{
     width: 15rem;
@@ -133,18 +97,19 @@ footer{
     color: white;
 }
 
-@media screen and (min-width: 768px){
-    li > a{
-        padding: 2rem 5rem;
-    }
-    #description{
-        display: flex;
-        justify-content: space-evenly;
-    }
-    #description > div{
-        width: 30%;
-    }
-    .paragraph{
-        min-height: 10rem;
-    }
-}
+/*@media screen and (min-width: 768px){*/
+    /*li > a{*/
+        /*padding: 2rem 5rem;*/
+    /*}*/
+    /*#description{*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*justify-content: center;*/
+    /*}*/
+    /*#description > div{*/
+        /*width: 30%;*/
+    /*}*/
+    /*.paragraph{*/
+        /*min-height: 10rem;*/
+    /*}*/
+/*}*/
