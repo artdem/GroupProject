@@ -26,19 +26,17 @@
     <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
     <form action="#" th:action="@{/admin/lacks/purchaser}" th:object="${purchaser}" method="post">
         <table>
+            <tr><h3>Wybierz Purchasera</h3></tr>
             <tr>
-                <td>Wybierz Forwardera</td>
-                <td><select th:field="*{purchaserID}">
+                <select th:field="*{purchaserID}">
                     <option th:each="purchaser : ${purchasers}"
                             th:value="${purchaser.purchaserID}"
                             th:text="${purchaser.purchaserID}">
                     </option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Zapisz" /></td>
+                </select>
             </tr>
         </table>
+        <input type="submit" value="Wyświetl" />
     </form>
 </section>
 </main>

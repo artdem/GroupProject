@@ -22,18 +22,20 @@
 </header>
 <main>
 <section id="description">
+    <form>
     <table>
+        <tr><h3>Lista braków dla wybranego Purchasera</h3></tr>
         <tr>
-            <td>Lack ID</td>
-            <td>Item</td>
-            <td>Item required amount</td>
-            <td>Forwarder ID</td>
-            <td>Purchaser ID</td>
-            <td>Supplier ID</td>
-            <td>Entry date</td>
-            <td>Lack status</td>
-            <td>Item ordered amount</td>
-            <td>Expected delivery date</td>
+            <td><b>Lack ID</b></td>
+            <td><b>Item</b></td>
+            <td><b>Item required amount</b></td>
+            <td><b>Forwarder ID</b></td>
+            <td><b>Purchaser ID</b></td>
+            <td><b>Supplier ID</b></td>
+            <td><b>Entry date</b></td>
+            <td><b>Lack status</b></td>
+            <td><b>Item ordered amount</b></td>
+            <td><b>Expected delivery date</b></td>
         </tr>
         <tr th:each="lack : *{lacks}">
             <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
@@ -49,6 +51,7 @@
             <td th:text="${lack.expectedDeliveryDateAndTime}"></td>
         </tr>
     </table>
+    </form>
 </section>
 </main>
 <footer class="background-blue">

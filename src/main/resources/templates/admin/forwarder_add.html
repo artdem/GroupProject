@@ -26,6 +26,7 @@
     <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
     <form action="#" th:action="@{/admin/forwarders/add}" th:object="${forwarder}" method="post">
         <table>
+            <tr><h3>Dodaj forwardera</h3></tr>
             <tr>
                 <td>Forwarder Name</td>
                 <td><input type="text" th:field="*{forwarderName}" /></td>
@@ -50,10 +51,8 @@
                 <td>Forwarder Skype ID</td>
                 <td><input type="text" th:field="*{skypeID}" /></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="Zapisz" /></td>
-            </tr>
         </table>
+        <input type="submit" value="Zapisz" />
     </form>
 </section>
 </main>

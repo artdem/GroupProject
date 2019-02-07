@@ -26,6 +26,7 @@
 <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
 <form action="#" th:action="@{/purchaser/suppliers/add}" th:object="${supplier}" method="post">
     <table>
+        <tr><h3>Dodaj Suppliera</h3></tr>
         <tr>
             <td>Supplier Name</td>
             <td><input type="text" th:field="*{supplierName}" /></td>
@@ -46,10 +47,8 @@
                 </option>
             </select></td>
         </tr>
-        <tr>
-            <td><input type="submit" value="Zapisz" /></td>
-        </tr>
     </table>
+    <input type="submit" value="Zapisz" />
 </form>
 </section>
 </main>

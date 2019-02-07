@@ -23,22 +23,21 @@
 <main>
 <section id="description">
 
-    <h3>Wybierz kupującego do skasowania</h3>
     <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
     <form action="#" th:action="@{/admin/purchasers/delete}" th:object="${purchaser}" method="post">
         <table>
+            <tr><h3>Wybierz Purchasera do skasowania</h3>
+            </tr>
             <tr>
-                <td><select th:field="*{purchaserID}">
+                <select th:field="*{purchaserID}">
                     <option th:each="purchaser : ${purchasers}"
                             th:value="${purchaser.purchaserID}"
                             th:text="${purchaser.purchaserID}">
                     </option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Skasuj" /></td>
+                </select>
             </tr>
         </table>
+        <input type="submit" value="Skasuj" />
     </form>
 </section>
 </main>

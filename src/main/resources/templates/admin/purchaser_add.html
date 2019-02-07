@@ -26,6 +26,7 @@
     <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
     <form action="#" th:action="@{/admin/purchasers/add}" th:object="${purchaser}" method="post">
         <table>
+            <tr><h3>Dodaj Purchasera</h3></tr>
             <tr>
                 <td>Purchaser Name</td>
                 <td><input type="text" th:field="*{purchaserName}" /></td>
@@ -50,10 +51,8 @@
                 <td>Purchaser Skype ID</td>
                 <td><input type="text" th:field="*{skypeID}" /></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="Zapisz" /></td>
-            </tr>
         </table>
+        <input type="submit" value="Zapisz" />
     </form>
 </section>
 </main>

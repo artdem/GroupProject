@@ -25,6 +25,7 @@
     <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
     <form action="#" th:action="@{/purchaser/lacks/update}" th:object="${lack}" method="post">
         <table>
+            <tr><h3>Zaktualizuj Lack</h3></tr>
             <tr>
                 <td>Lack ID</td>
                 <td><input hidden th:text="${lack.lackID}" th:field="*{lackID}" th:value="${lack.lackID}"></td>
@@ -82,10 +83,8 @@
                 <td>Purchaser comment</td>
                 <td><input type="text" th:field="*{purchaserAdditionalComment}" /></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="Zapisz" /></td>
-            </tr>
         </table>
+        <input type="submit" value="Zapisz" />
     </form>
 </section>
 </main>

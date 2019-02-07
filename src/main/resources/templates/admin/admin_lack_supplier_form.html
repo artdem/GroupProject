@@ -25,19 +25,17 @@
 
     <form action="#" th:action="@{/admin/lacks/supplier}" th:object="${supplier}" method="post">
         <table>
+            <tr><h3>Wybierz Suppliera</h3></tr>
             <tr>
-                <td>Wybierz Forwardera</td>
-                <td><select th:field="*{supplierID}">
+                <select th:field="*{supplierID}">
                     <option th:each="supplier : ${suppliers}"
                             th:value="${supplier.supplierID}"
                             th:text="${supplier.supplierID}">
                     </option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Wyświetl" /></td>
+                </select>
             </tr>
         </table>
+        <input type="submit" value="Wyświetl" />
     </form>
 </section>
 </main>

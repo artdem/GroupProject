@@ -22,23 +22,21 @@
 </header>
 <main>
 <section id="description">
-
-    <h3>Wybierz forwardera do skasowania</h3>
     <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
     <form action="#" th:action="@{/admin/forwarders/delete}" th:object="${forwarder}" method="post">
         <table>
+            <tr><h3>Wybierz forwardera do skasowania</h3>
+            </tr>
             <tr>
-                <td><select th:field="*{forwarderID}">
+                <select th:field="*{forwarderID}">
                     <option th:each="forwarder : ${forwarders}"
                             th:value="${forwarder.forwarderID}"
                             th:text="${forwarder.forwarderID}">
                     </option>
-                </select></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Skasuj" /></td>
+                </select>
             </tr>
         </table>
+        <input type="submit" value="Skasuj" />
     </form>
 </section>
 </main>

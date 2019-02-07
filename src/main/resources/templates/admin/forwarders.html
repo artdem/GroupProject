@@ -22,13 +22,16 @@
 </header>
 <main>
 <section id="description">
-
+    <form>
     <table>
         <tr>
-            <td><h3>Forwarder Name</h3></td>
-            <td><h3>Forwarder ID</h3></td>
-            <td><h3>Forwarder Email</h3></td>
-            <td><h3>Forwarder Skype ID</h3></td>
+            <h3>Lista Forwarderów</h3>
+        </tr>
+        <tr>
+            <td><b>Forwarder Name</b></td>
+            <td><b>Forwarder ID</b></td>
+            <td><b>Forwarder Email</b></td>
+            <td><b>Forwarder Skype ID</b></td>
         </tr>
         <tr th:each="forwarder : *{forwarders}">
             <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
@@ -38,6 +41,7 @@
             <td th:text="${forwarder.skypeID}"></td>
         </tr>
     </table>
+    </form>
 </section>
 </main>
 <footer class="background-blue">
