@@ -23,6 +23,7 @@
 <section id="description">
 
     <h3>Wybierz forwardera do skasowania</h3>
+    <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
     <form action="#" th:action="@{/admin/forwarders/delete}" th:object="${forwarder}" method="post">
         <table>
             <tr>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Purchaser suppliers list</title>
+    <title>Forwarder lack add success</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="BRAKI APP">
     <meta name="keywords" content=”html,javascript,css”>
@@ -14,26 +14,15 @@
     <nav>
         <ul>
             <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers">Suppliers list</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers/add">Add supplier</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers/delete">Delete supplier</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
         </ul>
     </nav>
 </header>
 <section id="description">
-
-<table>
-    <tr>
-        <td><h3>Supplier Name</h3></td>
-        <td><h3>Supplier ID</h3></td>
-        <td><h3>Purchaser ID</h3></td>
-    </tr>
-    <tr th:each="supplier : *{suppliers}">
-        <td th:text="${supplier.supplierName}"></td>
-        <td th:text="${supplier.supplierID}"></td>
-        <td th:text="${supplier.purchaserID}"></td>
-    </tr>
-</table>
+    <p>Następujący brak został zaktualizowany:</p>
+    <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+    <p th:text="${lack}" />
 </section>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>

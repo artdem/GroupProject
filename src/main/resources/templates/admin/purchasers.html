@@ -30,6 +30,7 @@
             <td><h3>Purchaser Skype ID</h3></td>
         </tr>
         <tr th:each="purchaser : *{purchasers}">
+            <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
             <td th:text="${purchaser.purchaserName}"></td>
             <td th:text="${purchaser.purchaserID}"></td>
             <td th:text="${purchaser.login}"></td>

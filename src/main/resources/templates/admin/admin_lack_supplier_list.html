@@ -35,6 +35,7 @@
             <td>Expected delivery date</td>
         </tr>
         <tr th:each="lack : *{lacks}">
+            <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
             <td th:text="${lack.lackID}"></td>
             <td th:text="${lack.item}"></td>
             <td th:text="${lack.requiredAmount}"></td>

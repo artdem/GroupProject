@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.entity.Supplier;
 import com.example.demo.models.LackDTO;
+import com.example.demo.models.LackStatus;
 import com.example.demo.models.PurchaserDTO;
 import com.example.demo.models.SupplierDTO;
 import com.example.demo.services.LackService;
@@ -78,5 +79,46 @@ public class PurchaserController{
         supplierService.delete(supplier);
         return modelAndViewOK;
     }
+
+    @GetMapping("/lacks")
+    public ModelAndView purchaserLacksList(LackDTO lack){
+        ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lacks_list");
+        modelAndView.addObject("lacks", lackService
+                .getPurchaserLacks(purchaserService.findByID("korposzczur1")));
+        return modelAndView;
+    }
+
+    @GetMapping("/lacks/updateselect")
+    public ModelAndView purchaserUpdateLack(LackDTO lack){
+        ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lack_update_select");
+        modelAndView.addObject("lack", lack);
+        modelAndView.addObject("lacks", lackService.getPurchaserLacks(purchaserService.findByID("korposzczur1")));
+        return modelAndView;
+    }
+
+    @PostMapping("/lacks/updateselect")
+    public ModelAndView lackUpdateForm(@RequestParam("idChecked") String idChecked){
+        ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lack_update");
+        modelAndView.addObject("lack", lackService.findByID(idChecked));
+        return modelAndView;
+    }
+
+    @PostMapping("/lacks/update")
+    public ModelAndView lackUpdateSuccess(@Valid @ModelAttribute("lack") LackDTO lack, BindingResult br) {
+        ModelAndView modelAndViewOK = new ModelAndView("/purchaser/purchaser_lack_update_success");
+        modelAndViewOK.addObject("lack", lack);
+
+        ModelAndView modelAndViewError = new ModelAndView("/purchaser/purchaser_lack_update");
+        modelAndViewError.addObject("lack", lack);
+//        modelAndViewError.addObject("lacks", lackService.getPurchaserLacks(purchaserService.findByID("korposzczur1")));
+
+        if (br.hasErrors()) {
+            return modelAndViewError;
+        }
+
+        purchaserService.updateLack(lack);
+        return modelAndViewOK;
+    }
+
 }
 

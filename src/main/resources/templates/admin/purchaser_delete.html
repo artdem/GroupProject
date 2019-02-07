@@ -23,6 +23,7 @@
 <section id="description">
 
     <h3>Wybierz kupującego do skasowania</h3>
+    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
     <form action="#" th:action="@{/admin/purchasers/delete}" th:object="${purchaser}" method="post">
         <table>
             <tr>

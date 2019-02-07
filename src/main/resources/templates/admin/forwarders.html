@@ -30,6 +30,7 @@
             <td><h3>Forwarder Skype ID</h3></td>
         </tr>
         <tr th:each="forwarder : *{forwarders}">
+            <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
             <td th:text="${forwarder.forwarderName}"></td>
             <td th:text="${forwarder.forwarderID}"></td>
             <td th:text="${forwarder.login}"></td>

@@ -17,9 +17,11 @@ public class ForwarderService {
 
     private final ForwarderRepository forwarderRepository;
     private final LackService lackService;
-    private ForwarderService(ForwarderRepository forwarderRepository, LackService lackService){
+    private final SupplierService supplierService;
+    private ForwarderService(ForwarderRepository forwarderRepository, LackService lackService, SupplierService supplierService){
         this.forwarderRepository = forwarderRepository;
         this.lackService = lackService;
+        this.supplierService = supplierService;
     }
 
     public List<ForwarderDTO> getAll(){
@@ -42,6 +44,7 @@ public class ForwarderService {
         lackDTO.setForwarderID("szczur1");
         lackDTO.setLacksSetDateAndTime(LocalDate.now());
         lackDTO.setStatus(LackStatus.NEW);
+        lackDTO.setPurchaserID(supplierService.findByID(lackDTO.getSupplierID()).getPurchaserID());
         lackService.save(lackDTO);
     }
 

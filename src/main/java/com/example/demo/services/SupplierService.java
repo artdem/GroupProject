@@ -24,6 +24,10 @@ public class SupplierService {
         supplierRepository.save(dtoToSupplier(supplierDTO));
     }
 
+    public SupplierDTO findByID(String id){
+        return supplierToDTO(supplierRepository.findById(id).get());
+    }
+
     public void delete(Supplier supplier){
         supplierRepository.deleteById(supplier.getSupplierID());
     }

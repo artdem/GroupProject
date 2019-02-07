@@ -1,11 +1,14 @@
 package com.example.demo.services;
 
 import com.example.demo.entity.Purchaser;
+import com.example.demo.models.LackDTO;
+import com.example.demo.models.LackStatus;
 import com.example.demo.models.PurchaserDTO;
 import com.example.demo.repositores.PurchaserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,8 +17,10 @@ import java.util.stream.Collectors;
 public class PurchaserService {
 
     private final PurchaserRepository purchaserRepository;
-    private PurchaserService(PurchaserRepository purchaserRepository){
+    private final LackService lackService;
+    private PurchaserService(PurchaserRepository purchaserRepository, LackService lackService){
         this.purchaserRepository = purchaserRepository;
+        this.lackService = lackService;
     }
 
     public List<PurchaserDTO> getAll(){
@@ -32,6 +37,10 @@ public class PurchaserService {
 
     public PurchaserDTO findByID(String id){
         return purchaserToDTO(purchaserRepository.findById(id).get());
+    }
+
+    public void updateLack(LackDTO lackDTO){
+        lackService.save(lackDTO);
     }
 
     Purchaser dtoToPurchaser(PurchaserDTO purchaserDTO) {

@@ -39,7 +39,6 @@
             <td>Purchaser Name</td>
             <td><select th:field="*{purchaserID}">
                 <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
-                <!--/*@thymesVar id="purchasers" type="java.util.List"*/-->
                 <option th:each="purchaser : ${purchasers}"
                         th:value="${purchaser.purchaserID}"
                         th:text="${purchaser.purchaserID}">

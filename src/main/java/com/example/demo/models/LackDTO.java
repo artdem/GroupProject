@@ -1,20 +1,25 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class LackDTO {
 
+    @NotBlank(message = "Item name must not be null and can't consist of only white characters")
     private String item;
+    @Min(value = 1, message = "Minimal value is 1")
     private int requiredAmount;
     private String forwarderAdditionalComment;
     private String forwarderID;
     private String purchaserID;
     private String supplierID;
-    private LocalDate LacksSetDateAndTime;
+    private LocalDate lacksSetDateAndTime;
     private LackStatus status;
     private String lackID;
     private int orderedAmount;
-    private LocalDate expectedDeliveryDateAndTime;
+    private Date expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
     public String getItem() {
@@ -66,11 +71,11 @@ public class LackDTO {
     }
 
     public LocalDate getLacksSetDateAndTime() {
-        return LacksSetDateAndTime;
+        return lacksSetDateAndTime;
     }
 
     public void setLacksSetDateAndTime(LocalDate lacksSetDateAndTime) {
-        LacksSetDateAndTime = lacksSetDateAndTime;
+        this.lacksSetDateAndTime = lacksSetDateAndTime;
     }
 
     public LackStatus getStatus() {
@@ -97,11 +102,11 @@ public class LackDTO {
         this.orderedAmount = orderedAmount;
     }
 
-    public LocalDate getExpectedDeliveryDateAndTime() {
+    public Date getExpectedDeliveryDateAndTime() {
         return expectedDeliveryDateAndTime;
     }
 
-    public void setExpectedDeliveryDateAndTime(LocalDate expectedDeliveryDateAndTime) {
+    public void setExpectedDeliveryDateAndTime(Date expectedDeliveryDateAndTime) {
         this.expectedDeliveryDateAndTime = expectedDeliveryDateAndTime;
     }
 
@@ -122,7 +127,7 @@ public class LackDTO {
                 ", forwarderID='" + forwarderID + '\'' +
                 ", purchaserID='" + purchaserID + '\'' +
                 ", supplierID='" + supplierID + '\'' +
-                ", LacksSetDateAndTime=" + LacksSetDateAndTime +
+                ", lacksSetDateAndTime=" + lacksSetDateAndTime +
                 ", status=" + status +
                 ", lackID='" + lackID + '\'' +
                 ", orderedAmount=" + orderedAmount +
