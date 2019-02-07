@@ -74,4 +74,17 @@ public class PurchaserDTO {
     public void setLogINstatus(boolean logINstatus) {
         this.logINstatus = logINstatus;
     }
+
+    @Override
+    public String toString() {
+        return "PurchaserDTO{" +
+                "purchaserName='" + purchaserName + '\'' +
+                ", purchaserID='" + purchaserID + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", SkypeID=" + SkypeID +
+                ", logINstatus=" + logINstatus +
+                '}';
+    }
 }

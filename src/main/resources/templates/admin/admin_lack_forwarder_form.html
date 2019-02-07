@@ -20,25 +20,27 @@
         </ul>
     </nav>
 </header>
+<main>
 <section id="description">
 
     <form action="#" th:action="@{/admin/lacks/forwarder}" th:object="${forwarder}" method="post">
         <table>
+            <tr><h3>Wybierz Forwardera</h3></tr>
             <tr>
-                <td>Wybierz Forwardera</td>
-                <td><select th:field="*{forwarderID}">
+                <select th:field="*{forwarderID}">
                     <option th:each="forwarder : ${forwarders}"
                             th:value="${forwarder.forwarderID}"
                             th:text="${forwarder.forwarderID}">
                     </option>
-                </select></td>
+                </select>
             </tr>
             <tr>
-                <td><input type="submit" value="Wyświetl" /></td>
+                <input type="submit" value="Wyświetl" />
             </tr>
         </table>
     </form>
 </section>
+</main>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
     <script src="index.js"></script>

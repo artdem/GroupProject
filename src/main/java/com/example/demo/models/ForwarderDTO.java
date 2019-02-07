@@ -74,4 +74,17 @@ public class ForwarderDTO {
     public void setLogINstatus(boolean logINstatus) {
         this.logINstatus = logINstatus;
     }
+
+    @Override
+    public String toString() {
+        return "ForwarderDTO{" +
+                "forwarderName='" + forwarderName + '\'' +
+                ", forwarderID='" + forwarderID + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", SkypeID=" + SkypeID +
+                ", logINstatus=" + logINstatus +
+                '}';
+    }
 }

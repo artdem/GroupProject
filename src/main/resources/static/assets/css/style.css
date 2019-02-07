@@ -22,14 +22,6 @@ table {
 th,td {
     border: 1px solid #4267b2;
 }
-.background-white{
-    background-color: white;
-    color: #333333;
-}
-.background-dark{
-    background-color: #333333;
-    color: white;
-}
 .background-blue{
     background-color: #4267b2;
 }
@@ -62,6 +54,8 @@ main{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-align: center;
+    justify-content: center;
+
 }
 h1{
     font-size: 4rem;
@@ -73,13 +67,11 @@ h2{
 h3{
     padding-bottom: 1rem;
 }
-.toggle-background:focus{
-    box-shadow: 0 0 0 0.2rem #BC243C;
-}
-#description > div{
+
+#description{
     margin: 2rem;
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     justify-content: center;
 
 }

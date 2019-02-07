@@ -20,11 +20,13 @@
         </ul>
     </nav>
 </header>
+<main>
 <section id="description">
     <p th:text="'Następujący kupujący został skasowany:'"/></br>
     <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
     <p th:text="${purchaser}" />
 </section>
+</main>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
     <script src="index.js"></script>

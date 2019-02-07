@@ -14,18 +14,19 @@
     <nav>
         <ul>
             <li><a href="http://localhost:8080">Home</a></li>
-            <li><a href="http://localhost:8080/forwarder">Lacks list</a></li>
+            <li><a href="http://localhost:8080/forwarder/lacks">Lacks list</a></li>
             <li><a href="http://localhost:8080/forwarder/lacks/add">Add lack</a></li>
             <li><a href="http://localhost:8080/forwarder/lacks/delete">Delete lack</a></li>
         </ul>
     </nav>
 </header>
+<main>
 <section id="description">
-
-    <h3>Wybierz braki do skasowania</h3>
     <form action="#" th:action="@{/forwarder/lacks/delete}" method="post">
         <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
         <table>
+            <tr><h3>Wybierz braki do skasowania</h3>
+            </tr>
             <tr>
                 <td>Select</td>
                 <td>Lack item</td>
@@ -43,6 +44,7 @@
         <input type="submit" value="Submit" />
     </form>
 </section>
+</main>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
     <script src="index.js"></script>
