@@ -40,10 +40,14 @@ public class LackService {
 
     public void save(LackDTO lackDTO){
         lackRepository.save(dtoToLack(lackDTO));
-        smsSender.sendSMS(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getPhoneNumber(),
-                "Brak: " + lackDTO.getItem()
-                        + ", data: " + lackDTO.getLacksSetDateAndTime()
-                        + ", ilość: " + lackDTO.getRequiredAmount());
+
+        // twilio.com account required:
+
+//        smsSender.sendSMS(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getPhoneNumber(),
+//                "Brak: " + lackDTO.getItem()
+//                        + ", data: " + lackDTO.getLacksSetDateAndTime()
+//                        + ", ilość: " + lackDTO.getRequiredAmount());
+        
         emailSender.sendEmail(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getLogin(),
                 lackDTO.getItem() + " " + lackDTO.getLacksSetDateAndTime(),
                 "Brak: " + lackDTO.getItem()
