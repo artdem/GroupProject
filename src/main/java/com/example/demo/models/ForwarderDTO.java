@@ -16,7 +16,7 @@ public class ForwarderDTO {
     @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
     private Role role;
-    private int SkypeID;
+    private String phoneNumber;
     private boolean logINstatus;
 
     public String getForwarderName() {
@@ -55,26 +55,6 @@ public class ForwarderDTO {
         return role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public int getSkypeID() {
-        return SkypeID;
-    }
-
-    public void setSkypeID(int skypeID) {
-        SkypeID = skypeID;
-    }
-
-    public boolean isLogINstatus() {
-        return logINstatus;
-    }
-
-    public void setLogINstatus(boolean logINstatus) {
-        this.logINstatus = logINstatus;
-    }
-
     @Override
     public String toString() {
         return "ForwarderDTO{" +
@@ -83,8 +63,28 @@ public class ForwarderDTO {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", SkypeID=" + SkypeID +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", logINstatus=" + logINstatus +
                 '}';
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isLogINstatus() {
+        return logINstatus;
+    }
+
+    public void setLogINstatus(boolean logINstatus) {
+        this.logINstatus = logINstatus;
     }
 }

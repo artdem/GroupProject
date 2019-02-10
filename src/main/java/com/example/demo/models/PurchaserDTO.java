@@ -16,7 +16,7 @@ public class PurchaserDTO {
     @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
     private Role role;
-    private int SkypeID;
+    private String phoneNumber;
     private boolean logINstatus;
 
     public String getPurchaserName() {
@@ -59,12 +59,12 @@ public class PurchaserDTO {
         this.role = role;
     }
 
-    public int getSkypeID() {
-        return SkypeID;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setSkypeID(int skypeID) {
-        SkypeID = skypeID;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public boolean isLogINstatus() {
@@ -83,7 +83,7 @@ public class PurchaserDTO {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", SkypeID=" + SkypeID +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", logINstatus=" + logINstatus +
                 '}';
     }

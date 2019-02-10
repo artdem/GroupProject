@@ -31,14 +31,14 @@
             <td><b>Forwarder Name</b></td>
             <td><b>Forwarder ID</b></td>
             <td><b>Forwarder Email</b></td>
-            <td><b>Forwarder Skype ID</b></td>
+            <td><b>Forwarder Phone nr</b></td>
         </tr>
         <tr th:each="forwarder : *{forwarders}">
             <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
             <td th:text="${forwarder.forwarderName}"></td>
             <td th:text="${forwarder.forwarderID}"></td>
             <td th:text="${forwarder.login}"></td>
-            <td th:text="${forwarder.skypeID}"></td>
+            <td th:text="${forwarder.phoneNumber}"></td>
         </tr>
     </table>
     </form>

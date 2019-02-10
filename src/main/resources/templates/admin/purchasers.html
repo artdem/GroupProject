@@ -29,14 +29,14 @@
             <td><b>Purchaser Name</b></td>
             <td><b>Purchaser ID</b></td>
             <td><b>Purchaser Email</b></td>
-            <td><b>Purchaser Skype ID</b></td>
+            <td><b>Purchaser Phone nr</b></td>
         </tr>
         <tr th:each="purchaser : *{purchasers}">
             <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
             <td th:text="${purchaser.purchaserName}"></td>
             <td th:text="${purchaser.purchaserID}"></td>
             <td th:text="${purchaser.login}"></td>
-            <td th:text="${purchaser.skypeID}"></td>
+            <td th:text="${purchaser.phoneNumber}"></td>
         </tr>
     </table>
 </form>

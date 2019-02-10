@@ -40,7 +40,7 @@ public class PurchaserService {
     }
 
     public void updateLack(LackDTO lackDTO){
-        lackService.save(lackDTO);
+        lackService.update(lackDTO);
     }
 
     Purchaser dtoToPurchaser(PurchaserDTO purchaserDTO) {

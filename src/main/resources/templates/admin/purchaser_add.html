@@ -48,8 +48,8 @@
                 <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
             </tr>
             <tr>
-                <td>Purchaser Skype ID</td>
-                <td><input type="text" th:field="*{skypeID}" /></td>
+                <td>Purchaser phone number</td>
+                <td><input type="text" th:field="*{phoneNumber}" /></td>
             </tr>
         </table>
         <input type="submit" value="Zapisz" />

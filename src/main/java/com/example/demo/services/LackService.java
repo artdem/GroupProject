@@ -6,6 +6,7 @@ import com.example.demo.models.LackDTO;
 import com.example.demo.models.PurchaserDTO;
 import com.example.demo.models.SupplierDTO;
 import com.example.demo.repositores.LackRepository;
+import com.example.demo.repositores.PurchaserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,14 @@ import java.util.stream.Collectors;
 public class LackService {
 
     private final LackRepository lackRepository;
-    private LackService(LackRepository lackRepository){
+    private final SmsSender smsSender;
+    private final PurchaserRepository purchaserRepository;
+    private final EmailSender emailSender;
+    private LackService(LackRepository lackRepository, SmsSender smsSender, PurchaserRepository purchaserRepository, EmailSender emailSender){
         this.lackRepository = lackRepository;
+        this.smsSender = smsSender;
+        this.purchaserRepository = purchaserRepository;
+        this.emailSender = emailSender;
     }
 
     public List<LackDTO> getForwarderLacks(ForwarderDTO forwarder){
@@ -32,6 +39,19 @@ public class LackService {
     }
 
     public void save(LackDTO lackDTO){
+        lackRepository.save(dtoToLack(lackDTO));
+        smsSender.sendSMS(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getPhoneNumber(),
+                "Brak: " + lackDTO.getItem()
+                        + ", data: " + lackDTO.getLacksSetDateAndTime()
+                        + ", ilość: " + lackDTO.getRequiredAmount());
+        emailSender.sendEmail(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getLogin(),
+                lackDTO.getItem() + " " + lackDTO.getLacksSetDateAndTime(),
+                "Brak: " + lackDTO.getItem()
+                        + ", data: " + lackDTO.getLacksSetDateAndTime()
+                        + ", brakująca ilość: " + lackDTO.getRequiredAmount());
+    }
+
+    public void update(LackDTO lackDTO){
         lackRepository.save(dtoToLack(lackDTO));
     }
 
@@ -47,9 +67,6 @@ public class LackService {
     public LackDTO findByID(String id){
         return lackToDTO(lackRepository.findById(id).get());
     }
-
-
-
 
     Lack dtoToLack(LackDTO lackDTO) {
         var lack = new Lack();
