@@ -139,6 +139,13 @@ public class AdminController{
         return modelAndView;
     }
 
+    @GetMapping("/lacks/lacks")
+    public ModelAndView lacksList(){
+        ModelAndView modelAndViewOK = new ModelAndView("/admin/admin_lacks_list");
+        modelAndViewOK.addObject("lacks", lackService.getAllLacks());
+        return modelAndViewOK;
+    }
+
     @GetMapping("/lacks/forwarder")
     public ModelAndView lacksForwarderForm(ForwarderDTO forwarder){
         ModelAndView modelAndView = new ModelAndView("/admin/admin_lack_forwarder_form");

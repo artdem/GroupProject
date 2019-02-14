@@ -28,6 +28,10 @@ public class LackService {
         this.emailSender = emailSender;
     }
 
+    public List<LackDTO> getAllLacks(){
+        return lackRepository.findAll().stream().map(this::lackToDTO).collect(Collectors.toList());
+    }
+
     public List<LackDTO> getForwarderLacks(ForwarderDTO forwarder){
         return lackRepository.findByForwarderID(forwarder.getForwarderID()).stream().map(this::lackToDTO).collect(Collectors.toList());
     }

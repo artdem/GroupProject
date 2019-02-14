@@ -10,4 +10,5 @@ public interface LackRepository extends CrudRepository<Lack, String> {
     List<Lack> findByForwarderID(String forwarderID);
     List<Lack> findByPurchaserID(String purchaserID);
     List<Lack> findBySupplierID(String supplierID);
+    List<Lack> findAll();
 }
