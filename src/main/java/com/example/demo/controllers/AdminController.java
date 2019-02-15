@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entity.Forwarder;
+import com.example.demo.entity.Supplier;
 import com.example.demo.models.SupplierDTO;
 import com.example.demo.services.LackService;
 import com.example.demo.entity.Purchaser;
@@ -132,6 +133,53 @@ public class AdminController{
         forwarderService.delete(forwarder);
         return modelAndViewOK;
     }
+
+    @GetMapping("/suppliers")
+    public ModelAndView supplier() {
+        ModelAndView modelAndView = new ModelAndView("/admin/suppliers");
+        modelAndView.addObject("suppliers", supplierService.getAll());
+        return modelAndView;
+    }
+
+    @GetMapping("/suppliers/add")
+    public ModelAndView addForm(SupplierDTO supplier){
+        ModelAndView modelAndView = new ModelAndView("/admin/supplier_add");
+        modelAndView.addObject("supplier", supplier);
+        modelAndView.addObject("purchasers", purchaserService.getAll());
+        return modelAndView;
+    }
+
+    @PostMapping("/suppliers/add")
+    public ModelAndView save(@Valid @ModelAttribute("supplier") SupplierDTO supplier, BindingResult br){
+        ModelAndView modelAndViewOK = new ModelAndView("/admin/supplier_add_success");
+        modelAndViewOK.addObject("supplier", supplier);
+
+        ModelAndView modelAndViewError = new ModelAndView("/admin/supplier_add");
+        modelAndViewError.addObject("supplier", supplier);
+        modelAndViewError.addObject("purchasers", purchaserService.getAll());
+
+        if(br.hasErrors()){
+            return modelAndViewError;
+        }
+        supplierService.save(supplier);
+        return modelAndViewOK;
+    }
+    @GetMapping("/suppliers/delete")
+    public ModelAndView deleteForm(Supplier supplier){
+        ModelAndView modelAndView = new ModelAndView("/admin/supplier_delete");
+        modelAndView.addObject("supplier", supplier);
+        modelAndView.addObject("suppliers", supplierService.getAll());
+        return modelAndView;
+    }
+
+    @PostMapping("/suppliers/delete")
+    public ModelAndView delete(@ModelAttribute("supplier") Supplier supplier){
+        ModelAndView modelAndViewOK = new ModelAndView("/admin/supplier_delete_success");
+        modelAndViewOK.addObject("supplier", supplier.getSupplierID());
+        supplierService.delete(supplier);
+        return modelAndViewOK;
+    }
+
 
     @GetMapping("/lacks")
     public ModelAndView adminLacks() {

@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -9,8 +10,8 @@ public class LackDTO {
 
     @NotBlank(message = "Item name must not be null and can't consist of only white characters")
     private String item;
-    @Min(value = 1, message = "Minimal value is 1")
-    private int requiredAmount;
+    @NotNull(message = "Enter required amount of item")
+    private String requiredAmount;
     private String forwarderAdditionalComment;
     private String forwarderID;
     private String purchaserID;
@@ -18,7 +19,7 @@ public class LackDTO {
     private LocalDate lacksSetDateAndTime;
     private LackStatus status;
     private String lackID;
-    private int orderedAmount;
+    private String orderedAmount;
     private Date expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
@@ -30,11 +31,11 @@ public class LackDTO {
         this.item = item;
     }
 
-    public int getRequiredAmount() {
+    public String getRequiredAmount() {
         return requiredAmount;
     }
 
-    public void setRequiredAmount(int requiredAmount) {
+    public void setRequiredAmount(String requiredAmount) {
         this.requiredAmount = requiredAmount;
     }
 
@@ -94,11 +95,11 @@ public class LackDTO {
         this.lackID = lackID;
     }
 
-    public int getOrderedAmount() {
+    public String getOrderedAmount() {
         return orderedAmount;
     }
 
-    public void setOrderedAmount(int orderedAmount) {
+    public void setOrderedAmount(String orderedAmount) {
         this.orderedAmount = orderedAmount;
     }
 

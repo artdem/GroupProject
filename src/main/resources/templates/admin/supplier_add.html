@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Supplier add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers">Supplier list</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/add">Add supplier</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/delete">Delete supplier</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+
+<!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
+<form action="#" th:action="@{/purchaser/suppliers/add}" th:object="${supplier}" method="post">
+    <table>
+        <tr><h3>Dodaj Suppliera</h3></tr>
+        <tr>
+            <td>Supplier Name</td>
+            <td><input type="text" th:field="*{supplierName}" /></td>
+            <td th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Supplier ID</td>
+            <td><input type="text" th:field="*{supplierID}" /></td>
+            <td th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">ID Error</td>
+        </tr>
+        <tr>
+            <td>Purchaser Name</td>
+            <td><select th:field="*{purchaserID}">
+                <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+                <option th:each="purchaser : ${purchasers}"
+                        th:value="${purchaser.purchaserID}"
+                        th:text="${purchaser.purchaserID}">
+                </option>
+            </select></td>
+        </tr>
+    </table>
+    <input type="submit" value="Zapisz" />
+</form>
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

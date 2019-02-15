@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Lack {
 
     private String item;
-    private int requiredAmount;
+    private String requiredAmount;
     private String forwarderAdditionalComment;
     private String forwarderID;
     private String purchaserID;
@@ -20,7 +20,7 @@ public class Lack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String lackID;
-    private int orderedAmount;
+    private String orderedAmount;
     private Date expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
@@ -32,11 +32,11 @@ public class Lack {
         this.item = item;
     }
 
-    public int getRequiredAmount() {
+    public String getRequiredAmount() {
         return requiredAmount;
     }
 
-    public void setRequiredAmount(int requiredAmount) {
+    public void setRequiredAmount(String requiredAmount) {
         this.requiredAmount = requiredAmount;
     }
 
@@ -96,11 +96,11 @@ public class Lack {
         this.lackID = lackID;
     }
 
-    public int getOrderedAmount() {
+    public String getOrderedAmount() {
         return orderedAmount;
     }
 
-    public void setOrderedAmount(int orderedAmount) {
+    public void setOrderedAmount(String orderedAmount) {
         this.orderedAmount = orderedAmount;
     }
 
