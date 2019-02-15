@@ -45,16 +45,15 @@ public class ForwarderController{
     }
 
     @GetMapping("/lacks/add")
-    public ModelAndView lacksForwarderList(LackDTO lack, SupplierDTO supplierDTO){
+    public ModelAndView lacksForwarderList(LackDTO lack){
         ModelAndView modelAndView = new ModelAndView("/forwarder/forwarder_lack_add");
         modelAndView.addObject("lack", lack);
         modelAndView.addObject("suppliers", supplierService.getAll());
-        modelAndView.addObject("supplier", supplierDTO);
         return modelAndView;
     }
 
     @PostMapping("/lacks/add")
-    public ModelAndView lackUpdateSuccess(@Valid @ModelAttribute("lack") LackDTO lack, SupplierDTO supplierDTO, BindingResult br){
+    public ModelAndView lackUpdateSuccess(@Valid @ModelAttribute("lack") LackDTO lack, BindingResult br){
         ModelAndView modelAndViewOK = new ModelAndView("/forwarder/forwarder_lack_add_success");
         modelAndViewOK.addObject("lack", lack);
 
