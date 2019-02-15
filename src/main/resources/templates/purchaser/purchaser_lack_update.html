@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Purchaser lack update</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+
+    <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+    <form action="#" th:action="@{/purchaser/lacks/update}" th:object="${lack}" method="post">
+        <table>
+            <tr><h3>Zaktualizuj Lack</h3></tr>
+            <tr>
+                <td>Lack ID</td>
+                <td><input hidden th:text="${lack.lackID}" th:field="*{lackID}" th:value="${lack.lackID}"></td>
+            </tr>
+            <tr>
+                <td>Item name</td>
+                <td><input hidden th:text="${lack.item}" th:field="*{item}" th:value="${lack.item}"></td>
+            </tr>
+            <tr>
+                <td>Required amount</td>
+                <td><input hidden th:text="${lack.requiredAmount}" th:field="*{requiredAmount}" th:value="${lack.requiredAmount}"></td>
+            </tr>
+            <tr>
+                <td>Forwarder comment</td>
+                <td><input hidden th:text="${lack.forwarderAdditionalComment}" th:field="*{forwarderAdditionalComment}" th:value="${lack.forwarderAdditionalComment}"></td>
+            </tr>
+            <tr>
+                <td>Forwarder ID</td>
+                <td><input hidden th:text="${lack.forwarderID}" th:field="*{forwarderID}" th:value="${lack.forwarderID}"></td>
+            </tr>
+            <tr>
+                <td>Purchaser ID</td>
+                <td><input hidden th:text="${lack.purchaserID}" th:field="*{purchaserID}" th:value="${lack.purchaserID}"></td>
+            </tr>
+            <tr>
+                <td>Supplier ID</td>
+                <td><input hidden th:text="${lack.supplierID}" th:field="*{supplierID}" th:value="${lack.supplierID}"></td>
+            </tr>
+            <tr>
+                <td>Lack entry date</td>
+                <td><input hidden th:text="${lack.lacksSetDateAndTime}" th:field="*{lacksSetDateAndTime}" th:value="${lack.lacksSetDateAndTime}"></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td><select th:field="*{status}">
+                    <option th:value="NEW"
+                            th:text="NEW">
+                    </option>
+                    <option th:value="ORDERED"
+                            th:text="ORDERED">
+                    </option>
+                </select>
+            </tr>
+            <tr>
+                <td>Ordered amount</td>
+                <td><input type="text" th:field="${lack.orderedAmount}"></td>
+            </tr>
+            <tr>
+                <td>Expected delivery date</td>
+                <td><input type="date" th:field="${lack.expectedDeliveryDateAndTime}"></td>
+                <td th:if="${#fields.hasErrors('expectedDeliveryDateAndTime')}" th:errors="*{expectedDeliveryDateAndTime}">Date Error</td>
+            </tr>
+
+            <tr>
+                <td>Purchaser comment</td>
+                <td><input type="text" th:field="*{purchaserAdditionalComment}" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Zapisz" />
+    </form>
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>
+

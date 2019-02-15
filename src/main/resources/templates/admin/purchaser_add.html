@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Purchaser add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/purchasers">Purchasers list</a></li>
+            <li><a href="http://localhost:8080/admin/purchasers/add">Add purchaser</a></li>
+            <li><a href="http://localhost:8080/admin/purchasers/delete">Delete purchaser</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+
+    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+    <form action="#" th:action="@{/admin/purchasers/add}" th:object="${purchaser}" method="post">
+        <table>
+            <tr><h3>Dodaj Purchasera</h3></tr>
+            <tr>
+                <td>Purchaser Name</td>
+                <td><input type="text" th:field="*{purchaserName}" /></td>
+                <td th:if="${#fields.hasErrors('purchaserName')}" th:errors="*{purchaserName}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Purchaser ID</td>
+                <td><input type="text" th:field="*{purchaserID}" /></td>
+                <td th:if="${#fields.hasErrors('purchaserID')}" th:errors="*{purchaserID}">ID Error</td>
+            </tr>
+            <tr>
+                <td>Purchaser login/email</td>
+                <td><input type="text" th:field="*{login}" /></td>
+                <td th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</td>
+            </tr>
+            <tr>
+                <td>Purchaser password</td>
+                <td><input type="text" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+            </tr>
+            <tr>
+                <td>Purchaser phone number</td>
+                <td><input type="text" th:field="*{phoneNumber}" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Zapisz" />
+    </form>
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

@@ -16,7 +16,7 @@ public class Purchaser {
     private String login;
     private String password;
     private Role role;
-    private int SkypeID;
+    private String phoneNumber;
     private boolean logINstatus;
 
     public String getPurchaserName() {
@@ -59,12 +59,12 @@ public class Purchaser {
         this.role = role;
     }
 
-    public int getSkypeID() {
-        return SkypeID;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setSkypeID(int skypeID) {
-        SkypeID = skypeID;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public boolean isLogINstatus() {

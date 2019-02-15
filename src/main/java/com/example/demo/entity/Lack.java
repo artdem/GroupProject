@@ -1,36 +1,34 @@
 package com.example.demo.entity;
 
-import org.hibernate.annotations.GeneratorType;
+import com.example.demo.models.LackStatus;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
 public class Lack {
 
-    @OneToOne
-    private Item item;
+    private String item;
     private int requiredAmount;
-    private String unitOfMeasure;
     private String forwarderAdditionalComment;
-    private int forwarderID;
-    private int forwarderSkypeID;
-    @OneToOne
-    private Supplier Supplier;
-    private LocalDate LacksSetDateAndTime;
-    private Boolean status;
+    private String forwarderID;
+    private String purchaserID;
+    private String supplierID;
+    private LocalDate lacksSetDateAndTime;
+    private LackStatus status;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String lackID;
     private int orderedAmount;
-    private LocalDate expectedDeliveryDateAndTime;
+    private Date expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
-    public Item getItem() {
+    public String getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(String item) {
         this.item = item;
     }
 
@@ -42,14 +40,6 @@ public class Lack {
         this.requiredAmount = requiredAmount;
     }
 
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
-    }
-
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
-    }
-
     public String getForwarderAdditionalComment() {
         return forwarderAdditionalComment;
     }
@@ -58,43 +48,43 @@ public class Lack {
         this.forwarderAdditionalComment = forwarderAdditionalComment;
     }
 
-    public int getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(int forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 
-    public int getForwarderSkypeID() {
-        return forwarderSkypeID;
+    public String getPurchaserID() {
+        return purchaserID;
     }
 
-    public void setForwarderSkypeID(int forwarderSkypeID) {
-        this.forwarderSkypeID = forwarderSkypeID;
+    public void setPurchaserID(String purchaserID) {
+        this.purchaserID = purchaserID;
     }
 
-    public Supplier getSupplier() {
-        return Supplier;
+    public String getSupplierID() {
+        return supplierID;
     }
 
-    public void setSupplier(Supplier supplier) {
-        Supplier = supplier;
+    public void setSupplierID(String supplierID) {
+        this.supplierID = supplierID;
     }
 
     public LocalDate getLacksSetDateAndTime() {
-        return LacksSetDateAndTime;
+        return lacksSetDateAndTime;
     }
 
     public void setLacksSetDateAndTime(LocalDate lacksSetDateAndTime) {
-        LacksSetDateAndTime = lacksSetDateAndTime;
+        this.lacksSetDateAndTime = lacksSetDateAndTime;
     }
 
-    public Boolean getStatus() {
+    public LackStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(LackStatus status) {
         this.status = status;
     }
 
@@ -114,11 +104,11 @@ public class Lack {
         this.orderedAmount = orderedAmount;
     }
 
-    public LocalDate getExpectedDeliveryDateAndTime() {
+    public Date getExpectedDeliveryDateAndTime() {
         return expectedDeliveryDateAndTime;
     }
 
-    public void setExpectedDeliveryDateAndTime(LocalDate expectedDeliveryDateAndTime) {
+    public void setExpectedDeliveryDateAndTime(Date expectedDeliveryDateAndTime) {
         this.expectedDeliveryDateAndTime = expectedDeliveryDateAndTime;
     }
 

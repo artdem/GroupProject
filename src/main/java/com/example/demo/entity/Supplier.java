@@ -9,8 +9,8 @@ public class Supplier {
     String supplierName;
     @Id
     private String supplierID;
-    private String purchaserName;
-    private int purchaserSkypeID;
+    private String purchaserID;
+
 
     public String getSupplierName() {
         return supplierName;
@@ -28,19 +28,18 @@ public class Supplier {
         this.supplierID = supplierID;
     }
 
-    public String getPurchaserName() {
-        return purchaserName;
+    public String getPurchaserID() {
+        return purchaserID;
     }
 
-    public void setPurchaserName(String purchaserName) {
-        this.purchaserName = purchaserName;
+    public void setPurchaserID(String purchaserID) {
+        this.purchaserID = purchaserID;
     }
 
-    public int getPurchaserSkypeID() {
-        return purchaserSkypeID;
-    }
-
-    public void setPurchaserSkypeID(int purchaserSkypeID) {
-        this.purchaserSkypeID = purchaserSkypeID;
+    @Override
+    public String toString() {
+        return "supplierName='" + supplierName + '\'' +
+                ", supplierID='" + supplierID + '\'' +
+                ", purchaserID='" + purchaserID + '\'';
     }
 }

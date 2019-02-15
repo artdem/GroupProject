@@ -8,14 +8,15 @@ public class ForwarderDTO {
 
     @NotBlank(message = "Forwarder name must not be null and can't consist of only white characters")
     private String forwarderName;
-    private long forwarderID;
+    @NotBlank(message = "Forwarder ID must not be null and can't consist of only white characters")
+    private String forwarderID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
     @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
     private Role role;
-    private int SkypeID;
+    private String phoneNumber;
     private boolean logINstatus;
 
     public String getForwarderName() {
@@ -26,11 +27,11 @@ public class ForwarderDTO {
         this.forwarderName = forwarderName;
     }
 
-    public long getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(long forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 
@@ -54,16 +55,29 @@ public class ForwarderDTO {
         return role;
     }
 
+    @Override
+    public String toString() {
+        return "ForwarderDTO{" +
+                "forwarderName='" + forwarderName + '\'' +
+                ", forwarderID='" + forwarderID + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", logINstatus=" + logINstatus +
+                '}';
+    }
+
     public void setRole(Role role) {
         this.role = role;
     }
 
-    public int getSkypeID() {
-        return SkypeID;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setSkypeID(int skypeID) {
-        SkypeID = skypeID;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public boolean isLogINstatus() {

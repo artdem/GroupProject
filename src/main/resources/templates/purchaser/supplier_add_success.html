@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Suppliers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers">Suppliers list</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers/add">Add supplier</a></li>
+            <li><a href="http://localhost:8080/purchaser/suppliers/delete">Delete supplier</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+    <p>Następujący Supplier został dodany:</p>
+    <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
+    <p th:text="${supplier}" />
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

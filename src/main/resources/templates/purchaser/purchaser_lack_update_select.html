@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Purchaser lack select</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
+            <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+    <form action="#" th:action="@{/purchaser/lacks/updateselect}" method="post">
+        <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+        <table>
+            <tr><h3>Wybierz brak do aktualizacji</h3>
+            </tr>
+            <tr>
+                <td>Select</td>
+                <td>Lack item</td>
+                <td>Date</td>
+                <td>Comment</td>
+            </tr>
+            <tr th:each="lack : ${lacks}">
+                <td>
+                    <input type="radio" th:name="idChecked" th:value="${lack.lackID}"></td>
+                <td th:text="${lack.item}"></td>
+                <td th:text="${lack.lacksSetDateAndTime}"></td>
+                <td th:text="${lack.forwarderAdditionalComment}"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

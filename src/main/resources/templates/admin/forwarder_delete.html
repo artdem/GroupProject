@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Forwarder delete</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="BRAKI APP">
+    <meta name="keywords" content=”html,javascript,css”>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="background-blue">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders">Forwarders list</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders/add">Add forwarder</a></li>
+            <li><a href="http://localhost:8080/admin/forwarders/delete">Delete forwarder</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+<section id="description">
+    <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
+    <form action="#" th:action="@{/admin/forwarders/delete}" th:object="${forwarder}" method="post">
+        <table>
+            <tr><h3>Wybierz forwardera do skasowania</h3>
+            </tr>
+            <tr>
+                <select th:field="*{forwarderID}">
+                    <option th:each="forwarder : ${forwarders}"
+                            th:value="${forwarder.forwarderID}"
+                            th:text="${forwarder.forwarderID}">
+                    </option>
+                </select>
+            </tr>
+        </table>
+        <input type="submit" value="Skasuj" />
+    </form>
+</section>
+</main>
+<footer class="background-blue">
+    <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
+    <script src="index.js"></script>
+</footer>
+</body>
+</html>

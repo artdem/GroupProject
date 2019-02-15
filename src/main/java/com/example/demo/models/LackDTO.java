@@ -1,28 +1,32 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class LackDTO {
 
-    private ItemDTO item;
+    @NotBlank(message = "Item name must not be null and can't consist of only white characters")
+    private String item;
+    @Min(value = 1, message = "Minimal value is 1")
     private int requiredAmount;
-    private String unitOfMeasure;
     private String forwarderAdditionalComment;
-    private int forwarderID;
-    private int forwarderSkypeID;
-    private SupplierDTO Supplier;
-    private LocalDate LacksSetDateAndTime;
-    private Boolean status;
+    private String forwarderID;
+    private String purchaserID;
+    private String supplierID;
+    private LocalDate lacksSetDateAndTime;
+    private LackStatus status;
     private String lackID;
     private int orderedAmount;
-    private LocalDate expectedDeliveryDateAndTime;
+    private Date expectedDeliveryDateAndTime;
     private String purchaserAdditionalComment;
 
-    public ItemDTO getItem() {
+    public String getItem() {
         return item;
     }
 
-    public void setItem(ItemDTO item) {
+    public void setItem(String item) {
         this.item = item;
     }
 
@@ -34,14 +38,6 @@ public class LackDTO {
         this.requiredAmount = requiredAmount;
     }
 
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
-    }
-
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
-    }
-
     public String getForwarderAdditionalComment() {
         return forwarderAdditionalComment;
     }
@@ -50,43 +46,43 @@ public class LackDTO {
         this.forwarderAdditionalComment = forwarderAdditionalComment;
     }
 
-    public int getForwarderID() {
+    public String getForwarderID() {
         return forwarderID;
     }
 
-    public void setForwarderID(int forwarderID) {
+    public void setForwarderID(String forwarderID) {
         this.forwarderID = forwarderID;
     }
 
-    public int getForwarderSkypeID() {
-        return forwarderSkypeID;
+    public String getPurchaserID() {
+        return purchaserID;
     }
 
-    public void setForwarderSkypeID(int forwarderSkypeID) {
-        this.forwarderSkypeID = forwarderSkypeID;
+    public void setPurchaserID(String purchaserID) {
+        this.purchaserID = purchaserID;
     }
 
-    public SupplierDTO getSupplier() {
-        return Supplier;
+    public String getSupplierID() {
+        return supplierID;
     }
 
-    public void setSupplier(SupplierDTO supplier) {
-        Supplier = supplier;
+    public void setSupplierID(String supplierID) {
+        this.supplierID = supplierID;
     }
 
     public LocalDate getLacksSetDateAndTime() {
-        return LacksSetDateAndTime;
+        return lacksSetDateAndTime;
     }
 
     public void setLacksSetDateAndTime(LocalDate lacksSetDateAndTime) {
-        LacksSetDateAndTime = lacksSetDateAndTime;
+        this.lacksSetDateAndTime = lacksSetDateAndTime;
     }
 
-    public Boolean getStatus() {
+    public LackStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(LackStatus status) {
         this.status = status;
     }
 
@@ -106,11 +102,11 @@ public class LackDTO {
         this.orderedAmount = orderedAmount;
     }
 
-    public LocalDate getExpectedDeliveryDateAndTime() {
+    public Date getExpectedDeliveryDateAndTime() {
         return expectedDeliveryDateAndTime;
     }
 
-    public void setExpectedDeliveryDateAndTime(LocalDate expectedDeliveryDateAndTime) {
+    public void setExpectedDeliveryDateAndTime(Date expectedDeliveryDateAndTime) {
         this.expectedDeliveryDateAndTime = expectedDeliveryDateAndTime;
     }
 
@@ -120,5 +116,23 @@ public class LackDTO {
 
     public void setPurchaserAdditionalComment(String purchaserAdditionalComment) {
         this.purchaserAdditionalComment = purchaserAdditionalComment;
+    }
+
+    @Override
+    public String toString() {
+        return "LackDTO{" +
+                "item='" + item + '\'' +
+                ", requiredAmount=" + requiredAmount +
+                ", forwarderAdditionalComment='" + forwarderAdditionalComment + '\'' +
+                ", forwarderID='" + forwarderID + '\'' +
+                ", purchaserID='" + purchaserID + '\'' +
+                ", supplierID='" + supplierID + '\'' +
+                ", lacksSetDateAndTime=" + lacksSetDateAndTime +
+                ", status=" + status +
+                ", lackID='" + lackID + '\'' +
+                ", orderedAmount=" + orderedAmount +
+                ", expectedDeliveryDateAndTime=" + expectedDeliveryDateAndTime +
+                ", purchaserAdditionalComment='" + purchaserAdditionalComment + '\'' +
+                '}';
     }
 }
