@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.models.ForwarderDTO;
 import com.example.demo.models.LackDTO;
 import com.example.demo.models.LackStatus;
+import com.example.demo.models.SupplierDTO;
 import com.example.demo.services.ForwarderService;
 import com.example.demo.services.LackService;
 import com.example.demo.services.SupplierService;
@@ -44,15 +45,16 @@ public class ForwarderController{
     }
 
     @GetMapping("/lacks/add")
-    public ModelAndView lacksForwarderList(LackDTO lack){
+    public ModelAndView lacksForwarderList(LackDTO lack, SupplierDTO supplierDTO){
         ModelAndView modelAndView = new ModelAndView("/forwarder/forwarder_lack_add");
         modelAndView.addObject("lack", lack);
         modelAndView.addObject("suppliers", supplierService.getAll());
+        modelAndView.addObject("supplier", supplierDTO);
         return modelAndView;
     }
 
     @PostMapping("/lacks/add")
-    public ModelAndView lackUpdateSuccess(@Valid @ModelAttribute("lack") LackDTO lack, BindingResult br){
+    public ModelAndView lackUpdateSuccess(@Valid @ModelAttribute("lack") LackDTO lack, SupplierDTO supplierDTO, BindingResult br){
         ModelAndView modelAndViewOK = new ModelAndView("/forwarder/forwarder_lack_add_success");
         modelAndViewOK.addObject("lack", lack);
 

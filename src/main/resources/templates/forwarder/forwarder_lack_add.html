@@ -23,6 +23,7 @@
 <main>
 <section id="description">
     <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+    <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
     <form action="#" th:action="@{/forwarder/lacks/add}" th:object="${lack}" method="post">
         <table>
             <tr><h3>Dodaj brak</h3></tr>
@@ -44,8 +45,8 @@
                 <td><select th:field="*{supplierID}">
                     <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
                     <option th:each="supplier : ${suppliers}"
-                            th:value="${supplier.supplierID}"
-                            th:text="${supplier.supplierID}">
+                            th:text="${supplier.supplierName}"
+                            th:value="${supplier.supplierID}">
                     </option>
                 </select>
                 </td>

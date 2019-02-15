@@ -20,6 +20,10 @@ public class SupplierService {
         return supplierRepository.findAll().stream().map(this::supplierToDTO).collect(Collectors.toList());
     }
 
+    public List<SupplierDTO> findByName(String supplierName){
+        return supplierRepository.findBySupplierName(supplierName).stream().map(this::supplierToDTO).collect(Collectors.toList());
+    }
+
     public void save(SupplierDTO supplierDTO){
         supplierRepository.save(dtoToSupplier(supplierDTO));
     }

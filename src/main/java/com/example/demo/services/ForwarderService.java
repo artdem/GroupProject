@@ -4,6 +4,7 @@ import com.example.demo.entity.Forwarder;
 import com.example.demo.models.ForwarderDTO;
 import com.example.demo.models.LackDTO;
 import com.example.demo.models.LackStatus;
+import com.example.demo.models.SupplierDTO;
 import com.example.demo.repositores.ForwarderRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

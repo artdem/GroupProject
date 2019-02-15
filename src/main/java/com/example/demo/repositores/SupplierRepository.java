@@ -9,4 +9,6 @@ public interface SupplierRepository extends CrudRepository<Supplier, String> {
     List<Supplier> findAll();
 
     void deleteBySupplierName(String supplierName);
+
+    List<Supplier> findBySupplierName(String supplierName);
 }
