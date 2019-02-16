@@ -2,12 +2,11 @@ package com.example.demo.controllers;
 
 import com.example.demo.entity.Supplier;
 import com.example.demo.models.LackDTO;
-import com.example.demo.models.LackStatus;
-import com.example.demo.models.PurchaserDTO;
+import com.example.demo.models.Role;
 import com.example.demo.models.SupplierDTO;
 import com.example.demo.services.LackService;
-import com.example.demo.services.PurchaserService;
 import com.example.demo.services.SupplierService;
+import com.example.demo.services.UserService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,12 +18,12 @@ import javax.validation.Valid;
 public class PurchaserController{
 
     private final LackService lackService;
-    private final PurchaserService purchaserService;
+    private final UserService userService;
     private final SupplierService supplierService;
 
-    public PurchaserController(LackService lackService, PurchaserService purchaserService, SupplierService supplierService) {
+    public PurchaserController(LackService lackService, UserService userService, SupplierService supplierService) {
         this.lackService = lackService;
-        this.purchaserService = purchaserService;
+        this.userService = userService;
         this.supplierService = supplierService;
     }
 
@@ -45,7 +44,7 @@ public class PurchaserController{
     public ModelAndView addForm(SupplierDTO supplier){
         ModelAndView modelAndView = new ModelAndView("/purchaser/supplier_add");
         modelAndView.addObject("supplier", supplier);
-        modelAndView.addObject("purchasers", purchaserService.getAll());
+        modelAndView.addObject("purchasers", userService.getAllByRole(Role.ROLE_PURCHASER));
         return modelAndView;
     }
 
@@ -56,7 +55,7 @@ public class PurchaserController{
 
         ModelAndView modelAndViewError = new ModelAndView("/purchaser/supplier_add");
         modelAndViewError.addObject("supplier", supplier);
-        modelAndViewError.addObject("purchasers", purchaserService.getAll());
+        modelAndViewError.addObject("purchasers", userService.getAllByRole(Role.ROLE_PURCHASER));
 
         if(br.hasErrors()){
             return modelAndViewError;
@@ -84,7 +83,7 @@ public class PurchaserController{
     public ModelAndView purchaserLacksList(LackDTO lack){
         ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lacks_list");
         modelAndView.addObject("lacks", lackService
-                .getPurchaserLacks(purchaserService.findByID("korposzczur1")));
+                .getPurchaserLacks(userService.findByID(2L)));
         return modelAndView;
     }
 
@@ -92,12 +91,12 @@ public class PurchaserController{
     public ModelAndView purchaserUpdateLack(LackDTO lack){
         ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lack_update_select");
         modelAndView.addObject("lack", lack);
-        modelAndView.addObject("lacks", lackService.getPurchaserLacks(purchaserService.findByID("korposzczur1")));
+        modelAndView.addObject("lacks", lackService.getPurchaserLacks(userService.findByID(2L)));
         return modelAndView;
     }
 
     @PostMapping("/lacks/updateselect")
-    public ModelAndView lackUpdateForm(@RequestParam("idChecked") String idChecked){
+    public ModelAndView lackUpdateForm(@RequestParam("idChecked") Long idChecked){
         ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lack_update");
         modelAndView.addObject("lack", lackService.findByID(idChecked));
         return modelAndView;
@@ -116,7 +115,7 @@ public class PurchaserController{
             return modelAndViewError;
         }
 
-        purchaserService.updateLack(lack);
+        userService.updateLack(lack);
         return modelAndViewOK;
     }
 

@@ -28,10 +28,9 @@
             <tr><h3>Wybierz dostawcę do skasowania</h3></tr>
             <tr>
                 <select th:field="*{supplierID}">
-                    <!--/*@thymesVar id="suppliers" type="java.util.List"*/-->
                     <option th:each="supplier : ${suppliers}"
                             th:value="${supplier.supplierID}"
-                            th:text="${supplier.supplierID}">
+                            th:text="${supplier.supplierName}">
                     </option>
                 </select>
             </tr>

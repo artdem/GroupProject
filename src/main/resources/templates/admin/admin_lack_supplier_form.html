@@ -23,6 +23,7 @@
 <main>
 <section id="description">
 
+    <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
     <form action="#" th:action="@{/admin/lacks/supplier}" th:object="${supplier}" method="post">
         <table>
             <tr><h3>Wybierz Suppliera</h3></tr>
@@ -30,7 +31,7 @@
                 <select th:field="*{supplierID}">
                     <option th:each="supplier : ${suppliers}"
                             th:value="${supplier.supplierID}"
-                            th:text="${supplier.supplierID}">
+                            th:text="${supplier.supplierName}">
                     </option>
                 </select>
             </tr>

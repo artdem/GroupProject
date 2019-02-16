@@ -1,12 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.entity.Lack;
-import com.example.demo.models.ForwarderDTO;
-import com.example.demo.models.LackDTO;
-import com.example.demo.models.PurchaserDTO;
-import com.example.demo.models.SupplierDTO;
+import com.example.demo.models.*;
 import com.example.demo.repositores.LackRepository;
-import com.example.demo.repositores.PurchaserRepository;
+import com.example.demo.repositores.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +16,12 @@ public class LackService {
 
     private final LackRepository lackRepository;
     private final SmsSender smsSender;
-    private final PurchaserRepository purchaserRepository;
+    private final UserRepository userRepository;
     private final EmailSender emailSender;
-    private LackService(LackRepository lackRepository, SmsSender smsSender, PurchaserRepository purchaserRepository, EmailSender emailSender){
+    private LackService(LackRepository lackRepository, SmsSender smsSender, UserRepository userRepository, EmailSender emailSender){
         this.lackRepository = lackRepository;
         this.smsSender = smsSender;
-        this.purchaserRepository = purchaserRepository;
+        this.userRepository = userRepository;
         this.emailSender = emailSender;
     }
 
@@ -32,11 +29,11 @@ public class LackService {
         return lackRepository.findAll().stream().map(this::lackToDTO).collect(Collectors.toList());
     }
 
-    public List<LackDTO> getForwarderLacks(ForwarderDTO forwarder){
-        return lackRepository.findByForwarderID(forwarder.getForwarderID()).stream().map(this::lackToDTO).collect(Collectors.toList());
+    public List<LackDTO> getForwarderLacks(UserDTO forwarder){
+        return lackRepository.findByForwarderID(forwarder.getUserID()).stream().map(this::lackToDTO).collect(Collectors.toList());
     }
-    public List<LackDTO> getPurchaserLacks(PurchaserDTO purchaser){
-        return lackRepository.findByPurchaserID(purchaser.getPurchaserID()).stream().map(this::lackToDTO).collect(Collectors.toList());
+    public List<LackDTO> getPurchaserLacks(UserDTO purchaser){
+        return lackRepository.findByPurchaserID(purchaser.getUserID()).stream().map(this::lackToDTO).collect(Collectors.toList());
     }
     public List<LackDTO> getSupplierLacks(SupplierDTO supplier){
         return lackRepository.findBySupplierID(supplier.getSupplierID()).stream().map(this::lackToDTO).collect(Collectors.toList());
@@ -52,7 +49,7 @@ public class LackService {
 //                        + ", data: " + lackDTO.getLacksSetDateAndTime()
 //                        + ", ilość: " + lackDTO.getRequiredAmount());
         
-        emailSender.sendEmail(purchaserRepository.findById(lackDTO.getPurchaserID()).get().getLogin(),
+        emailSender.sendEmail(userRepository.findById(lackDTO.getPurchaserID()).get().getLogin(),
                 lackDTO.getItem() + " " + lackDTO.getLacksSetDateAndTime(),
                 "Brak: " + lackDTO.getItem()
                         + ", data: " + lackDTO.getLacksSetDateAndTime()
@@ -63,16 +60,16 @@ public class LackService {
         lackRepository.save(dtoToLack(lackDTO));
     }
 
-    public List<LackDTO> delete(List<String> listID){
+    public List<LackDTO> delete(List<Long> listID){
         List<LackDTO> lista = new ArrayList<>();
-        for (String del:listID){
+        for (Long del:listID){
             lista.add(lackToDTO(lackRepository.findById(del).get()));
             lackRepository.deleteById(del);
         }
         return lista;
     }
 
-    public LackDTO findByID(String id){
+    public LackDTO findByID(Long id){
         return lackToDTO(lackRepository.findById(id).get());
     }
 

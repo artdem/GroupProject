@@ -33,17 +33,12 @@
             <td th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}">Name Error</td>
         </tr>
         <tr>
-            <td>Supplier ID</td>
-            <td><input type="text" th:field="*{supplierID}" /></td>
-            <td th:if="${#fields.hasErrors('supplierID')}" th:errors="*{supplierID}">ID Error</td>
-        </tr>
-        <tr>
             <td>Purchaser Name</td>
             <td><select th:field="*{purchaserID}">
-                <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+                <!--/*@thymesVar id="purchaser" type="com.example.demo.models.UserDTO"*/-->
                 <option th:each="purchaser : ${purchasers}"
-                        th:value="${purchaser.purchaserID}"
-                        th:text="${purchaser.purchaserID}">
+                        th:value="${purchaser.userID}"
+                        th:text="${purchaser.userName}">
                 </option>
             </select></td>
         </tr>

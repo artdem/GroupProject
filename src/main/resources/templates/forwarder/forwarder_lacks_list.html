@@ -29,22 +29,22 @@
             <td><b>Lack ID</b></td>
             <td><b>Item</b></td>
             <td><b>Item required amount</b></td>
-            <td><b>Forwarder ID</b></td>
-            <td><b>Purchaser ID</b></td>
-            <td><b>Supplier ID</b></td>
+            <td><b>Forwarder Name</b></td>
+            <td><b>Purchaser Name</b></td>
+            <td><b>Supplier Name</b></td>
             <td><b>Entry date</b></td>
             <td><b>Lack status</b></td>
             <td><b>Item ordered amount</b></td>
             <td><b>Expected delivery date</b></td>
         </tr>
+        <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
         <tr th:each="lack : *{lacks}">
-            <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
             <td th:text="${lack.lackID}"></td>
             <td th:text="${lack.item}"></td>
             <td th:text="${lack.requiredAmount}"></td>
-            <td th:text="${lack.forwarderID}"></td>
-            <td th:text="${lack.purchaserID}"></td>
-            <td th:text="${lack.supplierID}"></td>
+            <td th:text="${lack.forwarderName}"></td>
+            <td th:text="${lack.purchaserName}"></td>
+            <td th:text="${lack.supplierName}"></td>
             <td th:text="${lack.lacksSetDateAndTime}"></td>
             <td th:text="${lack.status}"></td>
             <td th:text="${lack.orderedAmount}"></td>

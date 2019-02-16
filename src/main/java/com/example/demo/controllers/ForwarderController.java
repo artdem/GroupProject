@@ -1,18 +1,14 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.ForwarderDTO;
 import com.example.demo.models.LackDTO;
-import com.example.demo.models.LackStatus;
-import com.example.demo.services.ForwarderService;
 import com.example.demo.services.LackService;
 import com.example.demo.services.SupplierService;
+import com.example.demo.services.UserService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,12 +16,12 @@ import java.util.List;
 public class ForwarderController{
 
     private final LackService lackService;
-    private final ForwarderService forwarderService;
+    private final UserService userService;
     private final SupplierService supplierService;
 
-    public ForwarderController(LackService lackService, ForwarderService forwarderService,SupplierService supplierService) {
+    public ForwarderController(LackService lackService, UserService userService, SupplierService supplierService) {
         this.lackService = lackService;
-        this.forwarderService = forwarderService;
+        this.userService = userService;
         this.supplierService = supplierService;
     }
 
@@ -39,7 +35,7 @@ public class ForwarderController{
     public ModelAndView forwarderLacksList(LackDTO lack){
         ModelAndView modelAndView = new ModelAndView("/forwarder/forwarder_lacks_list");
         modelAndView.addObject("lacks", lackService
-                .getForwarderLacks(forwarderService.findById("szczur1")));
+                .getForwarderLacks(userService.findByID(1L)));
         return modelAndView;
     }
 
@@ -64,7 +60,7 @@ public class ForwarderController{
             return modelAndViewError;
         }
 
-        forwarderService.saveLack(lack);
+        userService.saveLack(lack);
         return modelAndViewOK;
     }
 
@@ -73,12 +69,12 @@ public class ForwarderController{
         ModelAndView modelAndView = new ModelAndView("/forwarder/forwarder_lack_delete");
         modelAndView.addObject("lack", lack);
         modelAndView.addObject("lacks", lackService
-                .getForwarderLacks(forwarderService.findById("szczur1")));
+                .getForwarderLacks(userService.findByID(72036854775807L)));
         return modelAndView;
     }
 
     @PostMapping("/lacks/delete")
-    public ModelAndView user(@RequestParam("idChecked") List<String> idUsers){
+    public ModelAndView user(@RequestParam("idChecked") List<Long> idUsers){
         ModelAndView modelAndView = new ModelAndView("/forwarder/forwarder_lack_delete_success");
         modelAndView.addObject("lista", lackService.delete(idUsers));
         return modelAndView;

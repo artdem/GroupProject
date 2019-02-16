@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.entity.Supplier;
 import com.example.demo.models.SupplierDTO;
 import com.example.demo.repositores.SupplierRepository;
+import com.example.demo.repositores.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,10 @@ import java.util.stream.Collectors;
 @Service
 public class SupplierService {
     private final SupplierRepository supplierRepository;
-    private SupplierService(SupplierRepository supplierRepository){
+    private final UserRepository userRepository;
+    private SupplierService(SupplierRepository supplierRepository, UserRepository userRepository){
         this.supplierRepository = supplierRepository;
+        this.userRepository = userRepository;
     }
 
     public List<SupplierDTO> getAll(){
@@ -21,10 +24,11 @@ public class SupplierService {
     }
 
     public void save(SupplierDTO supplierDTO){
+        supplierDTO.setPurchaserName(userRepository.findById(supplierDTO.getPurchaserID()).get().getUserName());
         supplierRepository.save(dtoToSupplier(supplierDTO));
     }
 
-    public SupplierDTO findByID(String id){
+    public SupplierDTO findByID(Long id){
         return supplierToDTO(supplierRepository.findById(id).get());
     }
 

@@ -23,19 +23,14 @@
 <main>
 <section id="description">
 
-    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.UserDTO"*/-->
     <form action="#" th:action="@{/admin/purchasers/add}" th:object="${purchaser}" method="post">
         <table>
             <tr><h3>Dodaj Purchasera</h3></tr>
             <tr>
                 <td>Purchaser Name</td>
-                <td><input type="text" th:field="*{purchaserName}" /></td>
-                <td th:if="${#fields.hasErrors('purchaserName')}" th:errors="*{purchaserName}">Name Error</td>
-            </tr>
-            <tr>
-                <td>Purchaser ID</td>
-                <td><input type="text" th:field="*{purchaserID}" /></td>
-                <td th:if="${#fields.hasErrors('purchaserID')}" th:errors="*{purchaserID}">ID Error</td>
+                <td><input type="text" th:field="*{userName}" /></td>
+                <td th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Name Error</td>
             </tr>
             <tr>
                 <td>Purchaser login/email</td>

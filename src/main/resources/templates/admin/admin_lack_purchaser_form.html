@@ -23,15 +23,15 @@
 <main>
 <section id="description">
 
-    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.UserDTO"*/-->
     <form action="#" th:action="@{/admin/lacks/purchaser}" th:object="${purchaser}" method="post">
         <table>
             <tr><h3>Wybierz Purchasera</h3></tr>
             <tr>
-                <select th:field="*{purchaserID}">
+                <select th:field="*{userID}">
                     <option th:each="purchaser : ${purchasers}"
-                            th:value="${purchaser.purchaserID}"
-                            th:text="${purchaser.purchaserID}">
+                            th:value="${purchaser.userID}"
+                            th:text="${purchaser.userName}">
                     </option>
                 </select>
             </tr>

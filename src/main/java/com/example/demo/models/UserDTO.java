@@ -4,34 +4,34 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class AdminDTO {
+public class UserDTO {
 
-    @NotBlank(message = "Admin name must not be null and can't consist of only white characters")
-    private String adminName;
-    private long adminID;
+    @NotBlank(message = "User name must not be null and can't consist of only white characters")
+    private String userName;
+    private long userID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
     @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
-    private Role role;
-    private int SkypeID;
+    private String phoneNumber;
+    private String role;
     private boolean logINstatus;
 
-    public String getAdminName() {
-        return adminName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public long getAdminID() {
-        return adminID;
+    public long getUserID() {
+        return userID;
     }
 
-    public void setAdminID(long adminID) {
-        this.adminID = adminID;
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 
     public String getLogin() {
@@ -50,20 +50,20 @@ public class AdminDTO {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
-    }
-
-    public int getSkypeID() {
-        return SkypeID;
-    }
-
-    public void setSkypeID(int skypeID) {
-        SkypeID = skypeID;
     }
 
     public boolean isLogINstatus() {
