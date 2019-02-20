@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Purchaser suppliers list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,6 +17,8 @@
             <li><a href="http://localhost:8080/purchaser/suppliers">Suppliers list</a></li>
             <li><a href="http://localhost:8080/purchaser/suppliers/add">Add supplier</a></li>
             <li><a href="http://localhost:8080/purchaser/suppliers/delete">Delete supplier</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
@@ -26,14 +28,15 @@
 <table>
     <tr><h3>Lista Supplierów</h3></tr>
     <tr>
-        <td><b>Supplier Name</b></td>
         <td><b>Supplier ID</b></td>
-        <td><b>Purchaser ID</b></td>
+        <td><b>Supplier Name</b></td>
+        <td><b>Purchaser Name</b></td>
     </tr>
     <tr th:each="supplier : *{suppliers}">
-        <td th:text="${supplier.supplierName}"></td>
+        <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
         <td th:text="${supplier.supplierID}"></td>
-        <td th:text="${supplier.purchaserID}"></td>
+        <td th:text="${supplier.supplierName}"></td>
+        <td th:text="${supplier.purchaserName}"></td>
     </tr>
 </table>
     </form>

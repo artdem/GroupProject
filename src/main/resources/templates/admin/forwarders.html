@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Admin - Forwarders</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,6 +17,8 @@
             <li><a href="http://localhost:8080/admin/forwarders">Forwarders list</a></li>
             <li><a href="http://localhost:8080/admin/forwarders/add">Add forwarder</a></li>
             <li><a href="http://localhost:8080/admin/forwarders/delete">Delete forwarder</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
@@ -34,9 +36,9 @@
             <td><b>Forwarder Phone nr</b></td>
         </tr>
         <tr th:each="forwarder : *{forwarders}">
-            <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
-            <td th:text="${forwarder.forwarderName}"></td>
-            <td th:text="${forwarder.forwarderID}"></td>
+            <!--/*@thymesVar id="forwarder" type="com.example.demo.models.UserDTO"*/-->
+            <td th:text="${forwarder.userName}"></td>
+            <td th:text="${forwarder.userID}"></td>
             <td th:text="${forwarder.login}"></td>
             <td th:text="${forwarder.phoneNumber}"></td>
         </tr>

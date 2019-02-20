@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Purchaser lack select</title>
+    <title>Supplier delete</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="BRAKI APP">
     <meta name="keywords" content=”html,javascript,css”>
@@ -13,9 +13,10 @@
 <header class="background-blue">
     <nav>
         <ul>
-            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
-            <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
-            <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers">Supplier list</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/add">Add supplier</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/delete">Delete supplier</a></li>
             <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
             <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
@@ -23,26 +24,21 @@
 </header>
 <main>
 <section id="description">
-    <form action="#" th:action="@{/purchaser/lacks/updateselect}" method="post">
-        <!--/*@thymesVar id="lack" type="com.example.demo.models.LackDTO"*/-->
+    <!--/*@thymesVar id="supplier" type="com.example.demo.models.SupplierDTO"*/-->
+    <form action="#" th:action="@{/purchaser/suppliers/delete}" th:object="${supplier}" method="post">
         <table>
-            <tr><h3>Wybierz brak do aktualizacji</h3>
-            </tr>
+            <tr><h3>Wybierz dostawcę do skasowania</h3></tr>
             <tr>
-                <td>Select</td>
-                <td>Lack item</td>
-                <td>Date</td>
-                <td>Comment</td>
-            </tr>
-            <tr th:each="lack : ${lacks}">
-                <td>
-                    <input type="radio" th:name="idChecked" th:value="${lack.lackID}"></td>
-                <td th:text="${lack.item}"></td>
-                <td th:text="${lack.lacksSetDateAndTime}"></td>
-                <td th:text="${lack.forwarderAdditionalComment}"></td>
+                <select th:field="*{supplierID}">
+                    <!--/*@thymesVar id="suppliers" type="java.util.List"*/-->
+                    <option th:each="supplier : ${suppliers}"
+                            th:value="${supplier.supplierID}"
+                            th:text="${supplier.supplierID}">
+                    </option>
+                </select>
             </tr>
         </table>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Skasuj" />
     </form>
 </section>
 </main>

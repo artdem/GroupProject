@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Purchaser lack update</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,6 +16,8 @@
             <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
             <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
             <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
@@ -47,12 +49,24 @@
                 <td><input hidden th:text="${lack.forwarderID}" th:field="*{forwarderID}" th:value="${lack.forwarderID}"></td>
             </tr>
             <tr>
+                <td>Forwarder Name</td>
+                <td><input hidden th:text="${lack.forwarderName}" th:field="*{forwarderName}" th:value="${lack.forwarderName}"></td>
+            </tr>
+            <tr>
                 <td>Purchaser ID</td>
                 <td><input hidden th:text="${lack.purchaserID}" th:field="*{purchaserID}" th:value="${lack.purchaserID}"></td>
             </tr>
             <tr>
+                <td>Purchaser Name</td>
+                <td><input hidden th:text="${lack.purchaserName}" th:field="*{purchaserName}" th:value="${lack.purchaserName}"></td>
+            </tr>
+            <tr>
                 <td>Supplier ID</td>
                 <td><input hidden th:text="${lack.supplierID}" th:field="*{supplierID}" th:value="${lack.supplierID}"></td>
+            </tr>
+            <tr>
+                <td>Supplier Name</td>
+                <td><input hidden th:text="${lack.supplierName}" th:field="*{supplierName}" th:value="${lack.supplierName}"></td>
             </tr>
             <tr>
                 <td>Lack entry date</td>

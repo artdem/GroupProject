@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Forwarder delete</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,21 +17,23 @@
             <li><a href="http://localhost:8080/admin/forwarders">Forwarders list</a></li>
             <li><a href="http://localhost:8080/admin/forwarders/add">Add forwarder</a></li>
             <li><a href="http://localhost:8080/admin/forwarders/delete">Delete forwarder</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
 <main>
 <section id="description">
-    <!--/*@thymesVar id="forwarder" type="com.example.demo.models.ForwarderDTO"*/-->
+    <!--/*@thymesVar id="forwarder" type="com.example.demo.models.UserDTO"*/-->
     <form action="#" th:action="@{/admin/forwarders/delete}" th:object="${forwarder}" method="post">
         <table>
             <tr><h3>Wybierz forwardera do skasowania</h3>
             </tr>
             <tr>
-                <select th:field="*{forwarderID}">
+                <select th:field="*{userID}">
                     <option th:each="forwarder : ${forwarders}"
-                            th:value="${forwarder.forwarderID}"
-                            th:text="${forwarder.forwarderID}">
+                            th:value="${forwarder.userID}"
+                            th:text="${forwarder.userName}">
                     </option>
                 </select>
             </tr>

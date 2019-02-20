@@ -13,10 +13,10 @@
 <header class="background-blue">
     <nav>
         <ul>
-            <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers">Suppliers list</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers/add">Add supplier</a></li>
-            <li><a href="http://localhost:8080/purchaser/suppliers/delete">Delete supplier</a></li>
+            <li><a href="http://localhost:8080/admin">Admin</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers">Supplier list</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/add">Add supplier</a></li>
+            <li><a href="http://localhost:8080/admin/suppliers/delete">Delete supplier</a></li>
             <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
             <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
@@ -51,7 +51,6 @@
 </main>
 <footer class="background-blue">
     <p>Copyright &copy;2019 FullStackSeniorDeveloper</p>
-    <script src="index.js"></script>
 </footer>
 </body>
 </html>

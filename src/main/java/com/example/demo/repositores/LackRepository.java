@@ -5,9 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface LackRepository extends CrudRepository<Lack, String> {
+public interface LackRepository extends CrudRepository<Lack, Long> {
 
-    List<Lack> findByForwarderID(String forwarderID);
-    List<Lack> findByPurchaserID(String purchaserID);
-    List<Lack> findBySupplierID(String supplierID);
+    List<Lack> findByForwarderID(Long forwarderID);
+    List<Lack> findByPurchaserID(Long purchaserID);
+    List<Lack> findBySupplierID(Long supplierID);
+    List<Lack> findAll();
 }

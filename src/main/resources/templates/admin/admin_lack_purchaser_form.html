@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Lacks - Purchaser choice</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,21 +17,23 @@
             <li><a href="http://localhost:8080/admin/lacks/forwarder">Wg.Forwardera</a></li>
             <li><a href="http://localhost:8080/admin/lacks/purchaser">Wg.Purchasera</a></li>
             <li><a href="http://localhost:8080/admin/lacks/supplier">Wg.Suppliera</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
 <main>
 <section id="description">
 
-    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.PurchaserDTO"*/-->
+    <!--/*@thymesVar id="purchaser" type="com.example.demo.models.UserDTO"*/-->
     <form action="#" th:action="@{/admin/lacks/purchaser}" th:object="${purchaser}" method="post">
         <table>
             <tr><h3>Wybierz Purchasera</h3></tr>
             <tr>
-                <select th:field="*{purchaserID}">
+                <select th:field="*{userID}">
                     <option th:each="purchaser : ${purchasers}"
-                            th:value="${purchaser.purchaserID}"
-                            th:text="${purchaser.purchaserID}">
+                            th:value="${purchaser.userID}"
+                            th:text="${purchaser.userName}">
                     </option>
                 </select>
             </tr>

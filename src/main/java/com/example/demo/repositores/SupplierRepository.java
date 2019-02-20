@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface SupplierRepository extends CrudRepository<Supplier, String> {
+public interface SupplierRepository extends CrudRepository<Supplier, Long> {
     List<Supplier> findAll();
 
     void deleteBySupplierName(String supplierName);

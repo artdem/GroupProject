@@ -4,35 +4,34 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class PurchaserDTO {
+public class UserDTO {
 
-    @NotBlank(message = "Purchaser name must not be null and can't consist of only white characters")
-    private String purchaserName;
-    @NotBlank(message = "Purchaser ID must not be null and can't consist of only white characters")
-    private String purchaserID;
+    @NotBlank(message = "User name must not be null and can't consist of only white characters")
+    private String userName;
+    private long userID;
     @Email(message = "Enter valid email")
     private String login;
     @NotBlank(message = "Password must not be null and can't consist of only white characters")
     @Size(min = 6, message = "The minimum password size is 6 characters")
     private String password;
-    private Role role;
     private String phoneNumber;
+    private String role;
     private boolean logINstatus;
 
-    public String getPurchaserName() {
-        return purchaserName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPurchaserName(String purchaserName) {
-        this.purchaserName = purchaserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPurchaserID() {
-        return purchaserID;
+    public long getUserID() {
+        return userID;
     }
 
-    public void setPurchaserID(String purchaserID) {
-        this.purchaserID = purchaserID;
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 
     public String getLogin() {
@@ -51,20 +50,20 @@ public class PurchaserDTO {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public boolean isLogINstatus() {
@@ -77,13 +76,13 @@ public class PurchaserDTO {
 
     @Override
     public String toString() {
-        return "PurchaserDTO{" +
-                "purchaserName='" + purchaserName + '\'' +
-                ", purchaserID='" + purchaserID + '\'' +
+        return "UserDTO{" +
+                "userName='" + userName + '\'' +
+                ", userID=" + userID +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
                 ", logINstatus=" + logINstatus +
                 '}';
     }

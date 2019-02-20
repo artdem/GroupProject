@@ -6,9 +6,17 @@ public class SupplierDTO {
 
     @NotBlank(message = "Supplier name must not be null and can't consist of only white characters")
     private String supplierName;
-    @NotBlank(message = "Supplier ID must not be null and can't consist of only white characters")
-    private String supplierID;
-    private String purchaserID;
+    private Long supplierID;
+    private Long purchaserID;
+    private String purchaserName;
+
+    public String getPurchaserName() {
+        return purchaserName;
+    }
+
+    public void setPurchaserName(String purchaserName) {
+        this.purchaserName = purchaserName;
+    }
 
     public String getSupplierName() {
         return supplierName;
@@ -18,26 +26,28 @@ public class SupplierDTO {
         this.supplierName = supplierName;
     }
 
-    public String getSupplierID() {
+    public Long getSupplierID() {
         return supplierID;
     }
 
-    public void setSupplierID(String supplierID) {
+    public void setSupplierID(Long supplierID) {
         this.supplierID = supplierID;
     }
 
-    public String getPurchaserID() {
+    public Long getPurchaserID() {
         return purchaserID;
     }
 
-    public void setPurchaserID(String purchaserID) {
+    public void setPurchaserID(Long purchaserID) {
         this.purchaserID = purchaserID;
     }
 
     @Override
     public String toString() {
-        return "supplierName='" + supplierName + '\'' +
-                ", supplierID='" + supplierID + '\'' +
-                ", purchaserID='" + purchaserID + '\'';
+        return "SupplierDTO{" +
+                "supplierName='" + supplierName + '\'' +
+                ", purchaserID=" + purchaserID +
+                ", purchaserName='" + purchaserName + '\'' +
+                '}';
     }
 }
