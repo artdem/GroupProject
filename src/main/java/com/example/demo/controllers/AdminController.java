@@ -224,7 +224,5 @@ public class AdminController{
         modelAndViewOK.addObject("lacks", lackService.getSupplierLacks(supplier));
         return modelAndViewOK;
     }
-
-
 }
 

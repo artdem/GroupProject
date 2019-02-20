@@ -7,23 +7,39 @@ import com.example.demo.models.Role;
 import com.example.demo.models.UserDTO;
 import com.example.demo.repositores.UserRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 @Service
 public class UserService {
 
+
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final LackService lackService;
     private final SupplierService supplierService;
-    private UserService(UserRepository userRepository, LackService lackService, SupplierService supplierService){
+    private UserService(PasswordEncoder passwordEncoder, UserRepository userRepository, LackService lackService, SupplierService supplierService){
         this.userRepository = userRepository;
         this.lackService = lackService;
         this.supplierService = supplierService;
+        this.passwordEncoder = passwordEncoder;
+        if(userRepository.findByLogin("admin@admin.com").isEmpty()){
+            User admin = new User();
+            admin.setUserName("admin");
+            admin.setLogin("admin@admin.com");
+            admin.setPassword(passwordEncoder.encode("admin"));
+            admin.setRole("ROLE_ADMIN");
+            System.out.println(admin);
+            userRepository.save(admin);
+        }
     }
 
     public List<UserDTO> getAllUsers(){
@@ -36,6 +52,8 @@ public class UserService {
 
     public void saveUser(UserDTO userDTO, String role){
         userDTO.setRole(role);
+        String passwordToCode = userDTO.getPassword();
+        userDTO.setPassword(passwordEncoder.encode(passwordToCode));
         userRepository.save(dtoToUser(userDTO));
     }
 
@@ -47,13 +65,20 @@ public class UserService {
         return userToDTO(userRepository.findById(id).get());
     }
 
+    public UserDTO findByLogin(String login){
+        if(userRepository.findByLogin(login).isPresent()){
+            return userToDTO(userRepository.findByLogin(login).get());
+        }
+        throw new IllegalArgumentException("No user with login:" + login + " found!");
+    }
+
     public void updateLack(LackDTO lackDTO){
         lackService.update(lackDTO);
     }
 
-    public void saveLack(LackDTO lackDTO){
-        lackDTO.setForwarderID(1L);
-        lackDTO.setForwarderName(userRepository.findById(1L).get().getUserName());
+    public void saveLack(LackDTO lackDTO, Principal principal){
+        lackDTO.setForwarderID(userRepository.findByLogin(principal.getName()).get().getUserID());
+        lackDTO.setForwarderName(userRepository.findByLogin(principal.getName()).get().getUserName());
         lackDTO.setLacksSetDateAndTime(LocalDate.now());
         lackDTO.setStatus(LackStatus.NEW);
         lackDTO.setPurchaserID(supplierService.findByID(lackDTO.getSupplierID()).getPurchaserID());

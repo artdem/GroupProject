@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/purchaser")
@@ -80,18 +81,18 @@ public class PurchaserController{
     }
 
     @GetMapping("/lacks")
-    public ModelAndView purchaserLacksList(LackDTO lack){
+    public ModelAndView purchaserLacksList(LackDTO lack, Principal principal){
         ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lacks_list");
         modelAndView.addObject("lacks", lackService
-                .getPurchaserLacks(userService.findByID(2L)));
+                .getPurchaserLacks(userService.findByLogin(principal.getName())));
         return modelAndView;
     }
 
     @GetMapping("/lacks/updateselect")
-    public ModelAndView purchaserUpdateLack(LackDTO lack){
+    public ModelAndView purchaserUpdateLack(LackDTO lack, Principal principal){
         ModelAndView modelAndView = new ModelAndView("/purchaser/purchaser_lack_update_select");
         modelAndView.addObject("lack", lack);
-        modelAndView.addObject("lacks", lackService.getPurchaserLacks(userService.findByID(2L)));
+        modelAndView.addObject("lacks", lackService.getPurchaserLacks(userService.findByLogin(principal.getName())));
         return modelAndView;
     }
 

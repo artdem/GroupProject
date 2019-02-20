@@ -73,4 +73,17 @@ public class UserDTO {
     public void setLogINstatus(boolean logINstatus) {
         this.logINstatus = logINstatus;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "userName='" + userName + '\'' +
+                ", userID=" + userID +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role='" + role + '\'' +
+                ", logINstatus=" + logINstatus +
+                '}';
+    }
 }

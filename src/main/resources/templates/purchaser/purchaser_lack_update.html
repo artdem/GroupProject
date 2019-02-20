@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Purchaser lack update</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,6 +16,8 @@
             <li><a href="http://localhost:8080/purchaser">Purchaser panel</a></li>
             <li><a href="http://localhost:8080/purchaser/lacks">Lacks list</a></li>
             <li><a href="http://localhost:8080/purchaser/lacks/updateselect">Update lack</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>

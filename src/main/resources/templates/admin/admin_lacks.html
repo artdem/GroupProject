@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Admin - Lacks</title>
     <meta charset="UTF-8">
@@ -18,6 +18,8 @@
             <li><a href="http://localhost:8080/admin/lacks/forwarder">Wg.Forwardera</a></li>
             <li><a href="http://localhost:8080/admin/lacks/purchaser">Wg.Purchasera</a></li>
             <li><a href="http://localhost:8080/admin/lacks/supplier">Wg.Suppliera</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="http://localhost:8080/logout">LOGOUT</a></li>
+            <li sec:authorize="isAnonymous()"><a href="http://localhost:8080/login">LOGIN</a></li>
         </ul>
     </nav>
 </header>
