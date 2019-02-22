@@ -58,6 +58,9 @@ public class LackService {
 
     public void update(LackDTO lackDTO){
         lackRepository.save(dtoToLack(lackDTO));
+        emailSender.sendEmail(userRepository.findById(lackDTO.getForwarderID()).get().getLogin(),
+                lackDTO.getItem() + " " + lackDTO.getLacksSetDateAndTime(),
+                "Uwaga zaaktualizowano brak: " + lackDTO.getItem());
     }
 
     public List<LackDTO> delete(List<Long> listID){
